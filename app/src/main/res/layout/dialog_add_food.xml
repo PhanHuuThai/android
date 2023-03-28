@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:background="@drawable/bg_blue_corner_16_tp_left_top_right"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Black Burger"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="277dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView24"
+            android:layout_width="78dp"
+            android:layout_height="256dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="17dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_black_corner_10"
+            app:srcCompat="@drawable/hampogar" />
+
+        <LinearLayout
+            android:layout_width="103dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Số lượng"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="08dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edittext_border_pink"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_plus"
+                        android:layout_width="18dp"
+                        android:layout_height="26dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/plus_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:ignore="MissingConstraints" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_minus"
+                        android:layout_width="18dp"
+                        android:layout_height="26dp"
+                        android:layout_marginStart="68dp"
+                        android:layout_marginTop="1dp"
+                        android:src="@drawable/sign_minus_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.384"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txt_number_of_dishes"
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="1"
+                        android:gravity="center"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Bàn"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edittext_border_pink"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Spinner
+                        android:id="@+id/List_table"
+                        android:layout_width="83dp"
+                        android:layout_height="28dp"
+                        android:layout_weight="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.272"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Chú thích"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="180dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="09dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/edittext_border_pink" >
+
+
+                    <EditText
+                        android:id="@+id/editTextTextMultiLine"
+                        android:layout_width="163dp"
+                        android:layout_height="99dp"
+                        android:background="@drawable/edittext_border_pink"
+                        android:ems="10"
+                        android:gravity="top|start"
+                        android:hint="Enter your note!"
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:scrollbars="vertical"
+                        android:textColor="#000"
+                        android:textColorHint="#f5c3c0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_no_thanks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_black_corner_10"
+            android:text="CANCEL"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_pink_eb5f54_corner_10"
+            android:text="ADD"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>
