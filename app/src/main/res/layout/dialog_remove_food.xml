@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_blue_corner_border"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    >
+    android:background="@drawable/bg_blue_corner_border">
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/my_image_view4"
         android:layout_width="60dp"
@@ -17,8 +17,7 @@
         android:layout_weight="4"
         android:src="@drawable/hampogar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <LinearLayout
         android:id="@+id/linearLayout11"
@@ -35,9 +34,9 @@
             android:id="@+id/textView25"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@"
             android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/abril_fatface"
             android:text="Hamperger"
             android:textColor="@color/black" />
     </LinearLayout>

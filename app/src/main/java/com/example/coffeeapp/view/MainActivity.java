@@ -1,19 +1,20 @@
-package com.example.coffeeapp;
+package com.example.coffeeapp.view;
 
-//import android.support.v7.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
+
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
 
-import com.example.coffeeapp.bean.BillDetail;
+import com.example.coffeeapp.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_remove_food);
+        setContentView(R.layout.order_by_employee);
     }
 }
