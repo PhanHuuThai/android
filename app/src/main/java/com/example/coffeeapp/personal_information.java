@@ -1,15 +1,8 @@
 package com.example.coffeeapp;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
-
-import com.example.coffeeapp.Been.Staff;
-
-import java.util.ArrayList;
 
 public class personal_information extends Activity {
     private EditText id,name,date,phone,email,adress,salary;

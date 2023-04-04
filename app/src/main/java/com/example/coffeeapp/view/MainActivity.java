@@ -1,16 +1,19 @@
-package com.example.coffeeapp;
+package com.example.coffeeapp.view;
 
-//import android.support.v7.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
+
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.coffeeapp.R;
+import com.example.coffeeapp.AllBill;
+import com.example.coffeeapp.AllStaff;
+import com.example.coffeeapp.CustomStaff;
+import com.example.coffeeapp.ListDrink;
 
-public class MainActivity extends Activity{
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

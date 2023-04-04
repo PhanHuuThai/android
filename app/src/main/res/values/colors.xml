@@ -11,5 +11,6 @@
 <color name="red">#B14A4A</color>
 <color name="gray">#887F7F</color>
     <color name="background">#F9BC60</color>
-    <color name="gree" />
+    <color name="green">#669914</color>
+    <color name="brownText">#F69C5C</color>
 </resources>

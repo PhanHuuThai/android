@@ -1,4 +1,4 @@
-package com.example.coffeeapp.Been;
+package com.example.coffeeapp.bean;
 
 public class Staff {
 
