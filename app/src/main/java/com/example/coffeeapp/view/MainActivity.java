@@ -1,9 +1,17 @@
 package com.example.coffeeapp.view;
 
-import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+
+
 import android.os.Bundle;
 
-import com.example.coffeeapp.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.coffeeapp.AllBill;
+import com.example.coffeeapp.AllStaff;
+import com.example.coffeeapp.CustomStaff;
+import com.example.coffeeapp.ListDrink;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.dialog_remove_food);
-    }
+         //setContentView(R.layout.thongtincanhan);
+       Intent e = new Intent(MainActivity.this, AllStaff.class);
+        startActivity(e);
+   }
+
 }
