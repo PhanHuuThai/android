@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F4F2"
+    android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="#F6F4F3"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="149dp"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/my_image_view2"
+                    android:layout_width="123dp"
+                    android:layout_height="122dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/mypic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:id="@+id/imageView_CamChangePic"
+                    android:layout_width="52dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/baseline_camera_alt_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="230dp"
+                android:layout_height="69dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Thông Tin Của Tôi"
+                android:textColor="#000"
+                android:textSize="23sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="ID"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edit_ID"
+                    android:layout_width="217dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/edittext_border_yellow"
+                    android:enabled="false"
+                    android:minWidth="200dp"
+                    android:minHeight="50dp"
+                    android:text="102200200"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.313"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Tên"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="69dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edit_Name"
+                    android:layout_width="217dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/edittext_border_yellow"
+                    android:enabled="false"
+                    android:hint="Nguyễn Văn Viên"
+                    android:minWidth="200dp"
+                    android:minHeight="50dp"
+                    android:text="Nguyễn Hoàng Vũ"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.183"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.538" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_DateBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Ngày sinh"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edit_DateBirth"
+                    android:layout_width="217dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/edittext_border_yellow"
+                    android:enabled="false"
+                    android:minWidth="200dp"
+                    android:minHeight="50dp"
+                    android:text="22/02/2002"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.183"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.538" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_Phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Số điện thoại"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="217dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/edittext_border_yellow"
+                    android:enabled="false"
+                    android:minWidth="200dp"
+                    android:minHeight="50dp"
+                    android:text="0384535073"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.183"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.538" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_Mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edit_Mail"
+                    android:layout_width="217dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/edittext_border_yellow"
+                    android:enabled="false"
+                    android:minWidth="200dp"
+                    android:minHeight="50dp"
+                    android:text="nguyenhoangvutl@gmail.com"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.183"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.538" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_IDCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Địa chỉ"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="47dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/edit_IDCard"
+                    android:layout_width="217dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/edittext_border_yellow"
+                    android:enabled="false"
+                    android:minWidth="200dp"
+                    android:minHeight="50dp"
+                    android:text="156 Đoàn Phú Tứ, Hòa Khánh Nam, Liên Chiểu, Đà nẳng"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.183"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.538" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/edittext_border_red"
+            android:text="Đăng xuất"
+
+            />
+
+        <LinearLayout
+            android:layout_width="393dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_2"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:id="@+id/btn_all_staff"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_1"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_5"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/baseline_account_circle_24"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

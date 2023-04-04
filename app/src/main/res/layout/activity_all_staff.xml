@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".AllStaff">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh Sách Nhân Viên:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="308dp"
+        android:layout_height="57dp"
+        android:gravity="center"
+        android:text="QUẢN LÝ NHÂN VIÊN"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_staff"
+        android:layout_width="397dp"
+        android:layout_height="490dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497" />
+    <LinearLayout
+        android:layout_width="393dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/img"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </Button>
+
+        <Button
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_2"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </Button>
+
+        <Button
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_1"
+            android:backgroundTint="#FFC107"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </Button>
+
+        <Button
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_5"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btn_information"
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/baseline_account_circle_24"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </Button>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
