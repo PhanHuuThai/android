@@ -33,7 +33,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="328dp"
+            android:layout_height="283dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -52,7 +52,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextDate"
+                    android:id="@+id/editTextDateDay"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -84,13 +84,21 @@
                 android:background="@mipmap/ic_launcher_thongke_foreground"
                 android:hapticFeedbackEnabled="false">
 
+                <TextView
+                    android:id="@+id/tvRenevueDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="55dp"
+                    tools:layout_editor_absoluteY="63dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="318dp"
+            android:layout_height="325dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
@@ -110,7 +118,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextDate"
+                    android:id="@+id/editTextDateMonth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -137,14 +145,73 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="257dp"
+                android:layout_height="228dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@mipmap/ic_launcher_thongke_foreground"
                 android:hapticFeedbackEnabled="false">
 
+                <TextView
+                    android:id="@+id/tvRenevueMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="54dp"
+                    tools:layout_editor_absoluteY="76dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_2"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_1"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/img_3"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+
+            <Button
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/baseline_account_circle_24"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </Button>
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

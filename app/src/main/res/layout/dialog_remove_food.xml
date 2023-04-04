@@ -1,94 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:background="@drawable/bg_blue_corner_border">
+    android:background="@drawable/bg_blue_corner_border"
+    android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/my_image_view4"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="4"
-        android:src="@drawable/hampogar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/my_image_view4"
-        app:layout_constraintTop_toBottomOf="@+id/textView23">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView25"
+            android:id="@+id/textView23"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bevan"
+            android:gravity="center_horizontal"
+            android:text="Bạn muốn xoá ?"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/CIV_food"
+            android:layout_width="178dp"
+            android:layout_height="122dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="20dp" />
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:fontFamily="@font/abril_fatface"
+            android:gravity="center"
             android:text="Hamperger"
             android:textColor="@color/black" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView23"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bevan"
-        android:gravity="center_horizontal"
-        android:text="Bạn muốn xoá ?"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
 
-    <Button
-        android:id="@+id/btn_del"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="20dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
 
-        android:alpha="0.8"
-        android:backgroundTint="@color/red"
-        android:fontFamily="@font/abril_fatface"
-        android:text="Delete"
-        android:textColor="@color/material_dynamic_neutral0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_image_view4"
-        tools:ignore="NotSibling" />
+                android:alpha="0.8"
+                android:backgroundTint="@color/red"
+                android:fontFamily="@font/abril_fatface"
+                android:text="Delete"
+                android:textColor="@color/material_dynamic_neutral0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.185"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btn_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="20dp"
-        android:alpha="0.8"
-        android:backgroundTint="@color/teal_200"
-        android:fontFamily="@font/abril_fatface"
-        android:text="Cancel"
-        android:textColor="@color/material_dynamic_neutral0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_del"
-        app:layout_constraintTop_toBottomOf="@+id/my_image_view4"
-        tools:ignore="NotSibling" />
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:backgroundTint="@color/teal_200"
+                android:fontFamily="@font/abril_fatface"
+                android:text="Cancel"
+                android:textColor="@color/material_dynamic_neutral0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.826"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical"></LinearLayout>
+
+
+
+    </LinearLayout>
+</LinearLayout>

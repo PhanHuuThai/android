@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -45,10 +46,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/txt_name"
                     android:layout_width="110dp"
@@ -59,9 +62,10 @@
                     android:text="Tên"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/txt_getValueName"
-                    android:layout_width="230dp"
+
+                <Spinner
+                    android:id="@+id/SPN_getValueName"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/back"
@@ -71,6 +75,7 @@
                     android:textSize="15sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
@@ -86,18 +91,22 @@
                     android:text="Giá tiền"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/txt_getValueSalePrice"
-                    android:layout_width="230dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/back"
-                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_vertical"
                     android:text=""
+                    android:textAlignment="textStart"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
@@ -114,9 +123,9 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txt_getValueNumber"
-                    android:layout_width="230dp"
+                <EditText
+                    android:id="@+id/ET_getValueNumber"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
 
                     android:layout_marginTop="10dp"
@@ -131,33 +140,48 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="245dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_no_thanks"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="55dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_black_corner_10"
-            android:text="Huỷ"
-            android:textSize="14sp" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_send"
+            <Button
+                android:id="@+id/btn_no_thanks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_black_corner_10"
+                android:text="Huỷ"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_pink_eb5f54_corner_10"
-            android:text="Thêm"
-            android:textSize="14sp" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_pink_eb5f54_corner_10"
+                android:text="Thêm"
+                android:textSize="14sp" />
+        </LinearLayout>
+
     </LinearLayout>
-
 
 
 </LinearLayout>
