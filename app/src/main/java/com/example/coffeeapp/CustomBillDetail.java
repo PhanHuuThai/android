@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.coffeeapp.bean.BillDetail;
 
 import java.util.ArrayList;
@@ -22,11 +23,11 @@ public class CustomBillDetail extends RecyclerView.Adapter<CustomBillDetail.View
 
     @NonNull
     @Override
-    public CustomBillDetail.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.bill_detail_item, parent, false);
 
-        return new CustomBillDetail.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     public void filterList(ArrayList<BillDetail> filterlist) {
@@ -35,7 +36,7 @@ public class CustomBillDetail extends RecyclerView.Adapter<CustomBillDetail.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomBillDetail.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         if(position < BillDetailList.size()){
 

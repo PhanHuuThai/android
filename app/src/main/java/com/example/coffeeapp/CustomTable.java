@@ -23,7 +23,7 @@ public class CustomTable extends RecyclerView.Adapter<CustomTable.ViewHolder> {
 
     @NonNull
     @Override
-    public CustomTable.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.table_item, parent, false);
 
@@ -36,7 +36,7 @@ public class CustomTable extends RecyclerView.Adapter<CustomTable.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomTable.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int k = position;
         holder.img_table.setImageResource(R.drawable.table);
         holder.tv_ban.setText("Bàn " + Integer.toString(k));

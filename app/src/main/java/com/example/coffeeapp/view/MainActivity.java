@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 
+import com.example.coffeeapp.MenuActivity;
 import com.example.coffeeapp.R;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.dialog_remove_food);
 
-       Intent e = new Intent(MainActivity.this, AllStaff.class);
+       Intent e = new Intent(MainActivity.this, MenuActivity.class);
         startActivity(e);
    }
 }

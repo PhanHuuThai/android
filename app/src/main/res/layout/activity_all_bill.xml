@@ -37,6 +37,7 @@
         android:layout_width="100dp"
         android:layout_height="66dp"
         android:background="@drawable/bill"
+        android:backgroundTint="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.676"
@@ -90,7 +91,7 @@
         android:layout_height="34dp"
         android:gravity="center"
         android:text="HÓA ĐƠN"
-        android:textColor="@color/brownText"
+
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
