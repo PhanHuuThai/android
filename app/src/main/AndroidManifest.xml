@@ -29,6 +29,20 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.EmployeeTimekeepingV"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.RevenueView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".personal_information"
 
             android:exported="false">
