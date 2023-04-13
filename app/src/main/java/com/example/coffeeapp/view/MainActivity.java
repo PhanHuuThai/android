@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 
+import com.example.coffeeapp.R;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.coffeeapp.AllBill;
@@ -19,10 +20,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.dialog_remove_food);
 
-         //setContentView(R.layout.thongtincanhan);
        Intent e = new Intent(MainActivity.this, AllStaff.class);
         startActivity(e);
    }
-
 }
