@@ -4,6 +4,7 @@ package com.example.coffeeapp.view;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,6 +50,7 @@ public class OrderByEmployee extends AppCompatActivity {
     int quantity = 0;
     double salePrice = 0;
     String nameProductOrdered= "";
+    private static final int FILE_SELECT_CODE = 0;
 
 
     @SuppressLint("MissingInflatedId")
@@ -57,17 +60,12 @@ public class OrderByEmployee extends AppCompatActivity {
         setContentView(R.layout.order_by_employee);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-//        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder(StrictMode.getVmPolicy())
-//                .detectLeakedClosableObjects()
-//                .build());
         apiService = new ProductOrderApiService();
         List<productOrdered> list = new ArrayList<>();
         rvItems = (RecyclerView) findViewById(R.id.viewEmployees);
         ProducctOrderAdapter producctOrderAdapter = new ProducctOrderAdapter(list);
         rvItems.setAdapter(producctOrderAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
-
-
         apiService.GetAllPBO()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -79,7 +77,6 @@ public class OrderByEmployee extends AppCompatActivity {
                         for (productOrdered item :productByOrders
                              ) {
                             Log.d("DEBUG"," "+item.getName());
-//                            Log.d("DEBUG"," "+item.getImage().toString());
                             list.add(item);
                             producctOrderAdapter.notifyDataSetChanged();
                         }
@@ -101,7 +98,34 @@ public class OrderByEmployee extends AppCompatActivity {
 
 
     }
+    public  void reload(){
+        apiService = new ProductOrderApiService();
+        List<productOrdered> list = new ArrayList<>();
+        ProducctOrderAdapter producctOrderAdapter = new ProducctOrderAdapter(list);
+        rvItems.setAdapter(producctOrderAdapter);
+        apiService.GetAllPBO()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onSuccess(@NonNull List<productOrdered> productByOrders) {
+                        Log.d("DEBUG","Success");
+                        for (productOrdered item :productByOrders
+                        ) {
+                            Log.d("DEBUG"," "+item.getName());
+                            list.add(item);
+                            producctOrderAdapter.notifyDataSetChanged();
+                        }
+                    }
 
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("DEBUG","Fail "+e.getMessage());
+                        e.printStackTrace();
+                    }
+                });
+    }
     private void openFeedbackDialog(int gravity,List<productOrdered> list, ProducctOrderAdapter producctOrderAdapter) {
         final Dialog dialog = new Dialog(btnAdd.getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -118,50 +142,69 @@ public class OrderByEmployee extends AppCompatActivity {
         windownAttribute.gravity = gravity;
         window.setAttributes(windownAttribute);
         dialog.show();
-        TextView tvQuantity = (TextView) findViewById(R.id.ET_getValueNumber);
-//        TextView tvQuantity = dialog.findViewById(R.id.ET_getValueNumber);
-        TextView tvSalePrice = dialog.findViewById(R.id.txt_getValueSalePrice);
-        Spinner tvName = dialog.findViewById(R.id.SPN_getValueName);
-        List<Product> listProducts = new ArrayList<>();
-        listProducts.add(new Product(1,"Cà phê đen",18000,5,""));
-        listProducts.add(new Product(2,"Cà phê sữa",20000,10,""));
-        listProducts.add(new Product(3,"Trà Sữa",30000,5,""));
-        listProducts.add(new Product(4,"Bạc xĩu",25000,5,""));
-        List<String> listNameProduct = new ArrayList<>();
-        for (Product item: listProducts
-             ) {
-            listNameProduct.add(item.getName());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,listNameProduct);
-        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        tvName.setAdapter(adapter);
-        tvName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                             @Override
-                                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                                 if(!tvName.getSelectedItem().toString().equals("")) {
-                                                     for (Product item : listProducts
-                                                     ) {
-                                                         if (item.getName().equals(tvName.getSelectedItem().toString())) {
-                                                             tvSalePrice.setText(String.valueOf(item.getSalePrice()));
-                                                             idProductOrdered = item.getId();
-                                                             nameProductOrdered = item.getName();
-                                                             salePrice = item.getSalePrice();
-                                                             break;
-                                                         }
-                                                     }
+        EditText tvQuantity = dialog.findViewById(R.id.ET_getValueNumber);
+        EditText tvSalePrice = dialog.findViewById(R.id.txt_getValueSalePrice);
+        EditText tvName = dialog.findViewById(R.id.SPN_getValueName);
+        Button btnAddProduct = dialog.findViewById(R.id.btn_AddProduct);
+        btnAddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
 
-                                                 }
+                try {
+                    startActivityForResult(
+                            Intent.createChooser(intent, "Select a File to Upload"),
+                            FILE_SELECT_CODE);
+                } catch (android.content.ActivityNotFoundException ex) {
+                    // Potentially direct the user to the Market with a Dialog
+//                    Toast.makeText(this, "Please install a File Manager.",
+//                            Toast.LENGTH_SHORT).show();
 
-                                             }
-                                             @Override
-                                             public void onNothingSelected(AdapterView<?> parent) {
-
-                                             }
-                                         });
-        if(!tvQuantity.getText().toString().equals("") ){
-            quantity = Integer.parseInt(tvQuantity.getText().toString());
-            Log.d("QUANTITY",String.valueOf(quantity));
-        }
+                }
+            }
+        });
+//        List<Product> listProducts = new ArrayList<>();
+//        listProducts.add(new Product(1,"Cà phê đen",18000,5,""));
+//        listProducts.add(new Product(2,"Cà phê sữa",20000,10,""));
+//        listProducts.add(new Product(3,"Trà Sữa",30000,5,""));
+//        listProducts.add(new Product(4,"Bạc xĩu",25000,5,""));
+//        List<String> listNameProduct = new ArrayList<>();
+//        for (Product item: listProducts
+//             ) {
+//            listNameProduct.add(item.getName());
+//        }
+//        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,listNameProduct);
+//        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+//        tvName.setAdapter(adapter);
+//        tvName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                                             @Override
+//                                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                                                 if(!tvName.getSelectedItem().toString().equals("")) {
+//                                                     for (Product item : listProducts
+//                                                     ) {
+//                                                         if (item.getName().equals(tvName.getSelectedItem().toString())) {
+//                                                             tvSalePrice.setText(String.valueOf(item.getSalePrice()));
+//                                                             idProductOrdered = item.getId();
+//                                                             nameProductOrdered = item.getName();
+//                                                             salePrice = item.getSalePrice();
+//                                                             break;
+//                                                         }
+//                                                     }
+//
+//                                                 }
+//
+//                                             }
+//                                             @Override
+//                                             public void onNothingSelected(AdapterView<?> parent) {
+//
+//                                             }
+//                                         });
+//        if(!tvQuantity.getText().toString().equals("") ){
+//            quantity = Integer.parseInt(tvQuantity.getText().toString());
+//            Log.d("QUANTITY",String.valueOf(quantity));
+//        }
         Button btnCancel = dialog.findViewById(R.id.btn_no_thanks);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,5 +224,6 @@ public class OrderByEmployee extends AppCompatActivity {
             }
         });
     }
+
 
 }

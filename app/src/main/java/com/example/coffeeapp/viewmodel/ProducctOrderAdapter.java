@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.R;
+import com.example.coffeeapp.view.OrderByEmployee;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -29,6 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdapter.DataViewHolder>{
 
     List<productOrdered> foodItems;
+    private ProductOrderApiService apiService;
 
 
 
@@ -43,8 +47,10 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
         return new DataViewHolder(view);
     }
     public void filterList(List<productOrdered> foodItems) {
+//        notifyDataSetChanged();
         foodItems = foodItems;
         notifyDataSetChanged();
+
     }
     @Override
     public void onBindViewHolder(@NonNull DataViewHolder holder, int position) {
@@ -122,8 +128,10 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
                     for (productOrdered item:foodItems
                          ) {
                         if(item.getName().equals(text)){
-                            foodItems.remove(item);
+                            apiService = new ProductOrderApiService();
+                            apiService.deletePBO(String.valueOf(item.getId()));
                             filterList(foodItems);
+                             new OrderByEmployee().reload();
                             break;
                         }
                     }
