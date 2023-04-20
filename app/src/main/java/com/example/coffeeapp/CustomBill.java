@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.bean.Bill;
-import com.example.coffeeapp.bean.BillDetail;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,11 +34,11 @@ public class CustomBill extends RecyclerView.Adapter<CustomBill.ViewHolder>{
 
     @NonNull
     @Override
-    public CustomBill.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.bill_item, parent, false);
 
-        return new CustomBill.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     public void filterList(ArrayList<Bill> filterlist) {
@@ -48,7 +47,7 @@ public class CustomBill extends RecyclerView.Adapter<CustomBill.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomBill.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Bill bill = BillList.get(position);
         holder.img_tien.setImageResource(R.drawable.icon_tien);
         holder.tv_billid.setText(bill.getId());

@@ -6,10 +6,13 @@ import android.content.Intent;
 
 import android.os.Bundle;
 
+import com.example.coffeeapp.MenuActivity;
+import com.example.coffeeapp.R;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.coffeeapp.AllBill;
 import com.example.coffeeapp.AllStaff;
+import com.example.coffeeapp.AllTable;
 import com.example.coffeeapp.CustomStaff;
 import com.example.coffeeapp.ListDrink;
 
@@ -18,8 +21,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
        Intent e = new Intent(MainActivity.this, OrderByEmployee.class);
+=======
+        //setContentView(R.layout.dialog_remove_food);
+
+       Intent e = new Intent(MainActivity.this, AllStaff.class);
+>>>>>>> origin/dacduc
         startActivity(e);
    }
-
 }

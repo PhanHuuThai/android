@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.coffeeapp.bean.Staff;
+import com.example.coffeeapp.view.EmployeeTimekeepingV;
+import com.example.coffeeapp.view.OrderByEmployee;
+import com.example.coffeeapp.view.RevenueView;
 
 import java.util.ArrayList;
 
@@ -19,7 +22,7 @@ public class AllStaff extends AppCompatActivity {
     private RecyclerView rv_staff;
     private ArrayList<Staff> staffList;
     private CustomStaff customStaff;
-    private Button btninformation;
+    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
 
 
     @Override
@@ -31,14 +34,40 @@ public class AllStaff extends AppCompatActivity {
 
 
 
-        btninformation= findViewById(R.id.btn_information);
-        btninformation.setOnClickListener(new View.OnClickListener() {
+        btnthongtin= findViewById(R.id.btn_thongtin);
+        btnthongtin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(AllStaff.this,information_staff.class);
                 startActivity(intent);
             }
         });
+
+        btndiemdanh = findViewById(R.id.btn_diemdanh);
+        btndiemdanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(AllStaff.this, EmployeeTimekeepingV.class);
+                startActivity(intent);
+            }
+        });
+        btnsanpham = findViewById(R.id.btn_sanpham);
+        btnsanpham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(AllStaff.this, OrderByEmployee.class);
+                startActivity(intent);
+            }
+        });
+        btndoanhthu = findViewById(R.id.btn_doanhthu);
+        btndoanhthu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(AllStaff.this, RevenueView.class);
+                startActivity(intent);
+            }
+        });
+
 
         staffList = new ArrayList<>();
         staffList.add(new Staff(102,"Tran Van Hai","22/8/2002",384535073,"nguya","tamloc",12,70000));

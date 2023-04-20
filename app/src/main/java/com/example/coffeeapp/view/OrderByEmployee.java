@@ -27,7 +27,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coffeeapp.AllStaff;
 import com.example.coffeeapp.R;
+import com.example.coffeeapp.information_staff;
 import com.example.coffeeapp.model.Product;
 import com.example.coffeeapp.model.productOrdered;
 import com.example.coffeeapp.viewmodel.ProducctOrderAdapter;
@@ -46,6 +48,8 @@ public class OrderByEmployee extends AppCompatActivity {
     private ProductOrderApiService apiService;
     private RecyclerView rvItems;
     private FloatingActionButton btnAdd;
+    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
+
     int idProductOrdered  = 0;
     int quantity = 0;
     double salePrice = 0;
@@ -60,6 +64,47 @@ public class OrderByEmployee extends AppCompatActivity {
         setContentView(R.layout.order_by_employee);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+<<<<<<< HEAD
+=======
+//        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder(StrictMode.getVmPolicy())
+//                .detectLeakedClosableObjects()
+//                .build());
+        btnthongtin= findViewById(R.id.btn_thongtin);
+        btnthongtin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(OrderByEmployee.this, information_staff.class);
+                startActivity(intent);
+            }
+        });
+
+        btndiemdanh = findViewById(R.id.btn_diemdanh);
+        btndiemdanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(OrderByEmployee.this, EmployeeTimekeepingV.class);
+                startActivity(intent);
+            }
+        });
+        btnnhanvien = findViewById(R.id.btn_nhanvien);
+        btnnhanvien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(OrderByEmployee.this, AllStaff.class);
+                startActivity(intent);
+            }
+        });
+        btndoanhthu = findViewById(R.id.btn_doanhthu);
+        btndoanhthu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(OrderByEmployee.this, RevenueView.class);
+                startActivity(intent);
+            }
+        });
+
+
+>>>>>>> origin/dacduc
         apiService = new ProductOrderApiService();
         List<productOrdered> list = new ArrayList<>();
         rvItems = (RecyclerView) findViewById(R.id.viewEmployees);

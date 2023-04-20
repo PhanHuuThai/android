@@ -60,6 +60,7 @@
 
         <Button
             android:layout_width="78dp"
+            android:id="@+id/btn_doanhthu"
             android:layout_height="match_parent"
             android:background="@drawable/img"
             tools:ignore="SpeakableTextPresentCheck">
@@ -68,6 +69,7 @@
 
         <Button
             android:layout_width="78dp"
+            android:id="@+id/btn_sanpham"
             android:layout_height="match_parent"
             android:background="@drawable/img_2"
             tools:ignore="SpeakableTextPresentCheck">
@@ -76,6 +78,7 @@
 
         <Button
             android:layout_width="78dp"
+            android:id="@+id/btn_nhanvien"
             android:layout_height="match_parent"
             android:background="@drawable/img_1"
             android:backgroundTint="#FFC107"
@@ -85,6 +88,7 @@
 
         <Button
             android:layout_width="78dp"
+            android:id="@+id/btn_diemdanh"
             android:layout_height="match_parent"
             android:background="@drawable/img_5"
             tools:ignore="SpeakableTextPresentCheck">
@@ -92,7 +96,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btn_information"
+            android:id="@+id/btn_thongtin"
             android:layout_width="78dp"
             android:layout_height="match_parent"
             android:background="@drawable/baseline_account_circle_24"

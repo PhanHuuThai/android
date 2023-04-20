@@ -22,7 +22,35 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".PersonalActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".BillDetailView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.EmployeeTimekeepingV"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.RevenueView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -31,6 +59,13 @@
         <activity
             android:name=".personal_information"
 
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".OrderActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

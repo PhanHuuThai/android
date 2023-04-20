@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back_order_by_employee"
-    tools:context=".view.OrderByEmployee"
     app:defaultNavHost="true"
-    >
+    tools:context=".view.OrderByEmployee">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
 
 
         <LinearLayout
@@ -119,7 +117,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/ic_baseline_control_point_24" />
+                    app:srcCompat="@drawable/ic_baseline_control_point_24"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                 <Button
                     android:id="@+id/button2"
@@ -139,9 +138,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="393dp"
+            android:layout_height="48dp"
             android:layout_marginStart="1dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="1dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -151,6 +151,7 @@
 
             <Button
                 android:layout_width="78dp"
+                android:id="@+id/btn_doanhthu"
                 android:layout_height="match_parent"
                 android:background="@drawable/img"
                 tools:ignore="SpeakableTextPresentCheck">
@@ -159,6 +160,8 @@
 
             <Button
                 android:layout_width="78dp"
+                android:id="@+id/btn_sanpham"
+                android:backgroundTint="#FFC107"
                 android:layout_height="match_parent"
                 android:background="@drawable/img_2"
                 tools:ignore="SpeakableTextPresentCheck">
@@ -167,6 +170,7 @@
 
             <Button
                 android:layout_width="78dp"
+                android:id="@+id/btn_nhanvien"
                 android:layout_height="match_parent"
                 android:background="@drawable/img_1"
                 tools:ignore="SpeakableTextPresentCheck">
@@ -175,13 +179,15 @@
 
             <Button
                 android:layout_width="78dp"
+                android:id="@+id/btn_diemdanh"
                 android:layout_height="match_parent"
-                android:background="@drawable/img_3"
+                android:background="@drawable/img_5"
                 tools:ignore="SpeakableTextPresentCheck">
 
             </Button>
 
             <Button
+                android:id="@+id/btn_thongtin"
                 android:layout_width="78dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/baseline_account_circle_24"
