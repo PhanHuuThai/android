@@ -9,14 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.R;
+import com.example.coffeeapp.bean.Staff;
 import com.example.coffeeapp.model.employeeTimekeeping;
 
 import java.util.List;
 
 public class employeeTimekeepingAdapter  extends RecyclerView.Adapter<employeeTimekeepingAdapter.DataViewHolder>{
-    List<employeeTimekeeping> employeeTimekeepings;
+    List<Staff> employeeTimekeepings;
     //private Context context;
-    public employeeTimekeepingAdapter(List<employeeTimekeeping> employeeTimekeepings) {
+    public employeeTimekeepingAdapter(List<Staff> employeeTimekeepings) {
         this.employeeTimekeepings = employeeTimekeepings;
         // this.context = context;
     }
@@ -29,8 +30,8 @@ public class employeeTimekeepingAdapter  extends RecyclerView.Adapter<employeeTi
 
     @Override
     public void onBindViewHolder(@NonNull DataViewHolder holder, int position) {
-        employeeTimekeeping employeeTKP= employeeTimekeepings.get(position);
-        holder.tvName.setText(employeeTKP.getNameEmployee());
+        Staff employeeTKP= employeeTimekeepings.get(position);
+        holder.tvName.setText(employeeTKP.getName());
     }
 
 

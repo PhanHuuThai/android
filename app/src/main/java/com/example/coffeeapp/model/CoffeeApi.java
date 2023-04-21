@@ -1,5 +1,9 @@
 package com.example.coffeeapp.model;
 
+import android.util.Log;
+
+import com.example.coffeeapp.bean.Staff;
+
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Single;
@@ -12,9 +16,12 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CoffeeApi {
-    @GET("ProductByOrderServlet")
-    Single<List<productOrdered>> getAllPBO();
-    @POST("ProductByOrderServlet/{productId}")
-    Call<Void> deletePBO(@Path("productId") String productId);
-
+    @GET("ProductByOrderServlet/{key}")
+    Single<List<productOrdered>> getPBO(@Path("key") String key);
+    @DELETE("ProductByOrderServlet/{productId}")
+    Single<Void> deletePBO(@Path("productId") String productId);
+    @GET("EmployeeServlet/{key}")
+    Single<List<Staff>> getStaff(@Path("key") String key);
+    @POST("EmployeeServlet/{account}")
+    Single<account> CheckLogin(@Path("account")String account);
 }

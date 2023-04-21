@@ -46,6 +46,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class OrderByEmployee extends AppCompatActivity {
     private ProductOrderApiService apiService;
+    ProducctOrderAdapter producctOrderAdapter;
     private RecyclerView rvItems;
     private FloatingActionButton btnAdd;
     private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
@@ -64,11 +65,6 @@ public class OrderByEmployee extends AppCompatActivity {
         setContentView(R.layout.order_by_employee);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-<<<<<<< HEAD
-=======
-//        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder(StrictMode.getVmPolicy())
-//                .detectLeakedClosableObjects()
-//                .build());
         btnthongtin= findViewById(R.id.btn_thongtin);
         btnthongtin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,14 +100,13 @@ public class OrderByEmployee extends AppCompatActivity {
         });
 
 
->>>>>>> origin/dacduc
         apiService = new ProductOrderApiService();
         List<productOrdered> list = new ArrayList<>();
         rvItems = (RecyclerView) findViewById(R.id.viewEmployees);
-        ProducctOrderAdapter producctOrderAdapter = new ProducctOrderAdapter(list);
+        producctOrderAdapter = new ProducctOrderAdapter(list,apiService);
         rvItems.setAdapter(producctOrderAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
-        apiService.GetAllPBO()
+        apiService.GetAllPBO("All")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
@@ -133,6 +128,7 @@ public class OrderByEmployee extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 });
+
         btnAdd = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,34 +139,7 @@ public class OrderByEmployee extends AppCompatActivity {
 
 
     }
-    public  void reload(){
-        apiService = new ProductOrderApiService();
-        List<productOrdered> list = new ArrayList<>();
-        ProducctOrderAdapter producctOrderAdapter = new ProducctOrderAdapter(list);
-        rvItems.setAdapter(producctOrderAdapter);
-        apiService.GetAllPBO()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
-                    @SuppressLint("NotifyDataSetChanged")
-                    @Override
-                    public void onSuccess(@NonNull List<productOrdered> productByOrders) {
-                        Log.d("DEBUG","Success");
-                        for (productOrdered item :productByOrders
-                        ) {
-                            Log.d("DEBUG"," "+item.getName());
-                            list.add(item);
-                            producctOrderAdapter.notifyDataSetChanged();
-                        }
-                    }
 
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.d("DEBUG","Fail "+e.getMessage());
-                        e.printStackTrace();
-                    }
-                });
-    }
     private void openFeedbackDialog(int gravity,List<productOrdered> list, ProducctOrderAdapter producctOrderAdapter) {
         final Dialog dialog = new Dialog(btnAdd.getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

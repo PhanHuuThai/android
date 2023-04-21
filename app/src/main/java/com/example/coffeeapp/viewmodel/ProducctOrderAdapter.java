@@ -36,14 +36,16 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
 
 
 
-    public ProducctOrderAdapter(List<productOrdered> food) {
+    public ProducctOrderAdapter(List<productOrdered> food,ProductOrderApiService apiService) {
         this.foodItems = food;
+        this.apiService = apiService;
     }
 
     @NonNull
     @Override
     public ProducctOrderAdapter.DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item, parent, false);
+//        apiService = new ProductOrderApiService();
         return new DataViewHolder(view);
     }
     public void filterList(List<productOrdered> foodItems) {
@@ -128,10 +130,14 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
                     for (productOrdered item:foodItems
                          ) {
                         if(item.getName().equals(text)){
-                            apiService = new ProductOrderApiService();
+//                            apiService = new ProductOrderApiService();
+                            Log.d("DEBUG","id:"+item.getId()
+                            );
                             apiService.deletePBO(String.valueOf(item.getId()));
+                            int position  = foodItems.indexOf(item);
+                            notifyItemRemoved(position);
+                            foodItems.remove(item);
                             filterList(foodItems);
-                             new OrderByEmployee().reload();
                             break;
                         }
                     }

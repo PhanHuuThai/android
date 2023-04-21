@@ -1,7 +1,9 @@
-package com.example.coffeeapp;
+package com.example.coffeeapp.viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,35 +13,38 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coffeeapp.R;
 import com.example.coffeeapp.bean.Staff;
+import com.example.coffeeapp.personal_information;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CustomStaff extends RecyclerView.Adapter<CustomStaff.ViewHolder> {
-    private ArrayList<Staff> StaffList;
+public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> {
+    private List<Staff> StaffList;
     Context context;
-    public CustomStaff(ArrayList<Staff> staffList, Context context)
+    public StaffAdapter(List<Staff> staffList,Context context)
     {
         StaffList= staffList;
         this.context = context;
     }
     @NonNull
     @Override
-    public CustomStaff.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StaffAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.staff_item, parent, false);
 
-        return new CustomStaff.ViewHolder(view);
+        return new StaffAdapter.ViewHolder(view);
     }
 
-    public void filterList(ArrayList<Staff> filterlist) {
+    public void filterList(List<Staff> filterlist) {
         StaffList = filterlist;
         notifyDataSetChanged();
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomStaff.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StaffAdapter.ViewHolder holder, int position) {
 
         Staff staff = StaffList.get(position);
         holder.img_staff.setImageResource(R.drawable.icon_nhanvien);
@@ -49,8 +54,20 @@ public class CustomStaff extends RecyclerView.Adapter<CustomStaff.ViewHolder> {
         holder.btn_Xem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("DEBUG","StaffAdapter");
                 Intent e = new Intent(context, personal_information.class);
+                e.putExtra("id",staff.getId());
+                e.putExtra("Fullname",staff.getName());
+                e.putExtra("Phonenumber",staff.getPhonenumber());
+                e.putExtra("email",staff.getEmail());
+                e.putExtra("Dayofbirth",staff.getDayofbirth());
+                e.putExtra("Address",staff.getAddress());
+                e.putExtra("Username",staff.getUsername());
+                e.putExtra("Salary",staff.getSalary());
+                e.putExtra("Numberworkingday",staff.getNumberworkingday());
+                Log.d("DEBUG","StaffAdapter_1");
                 context.startActivity(e);
+
             }
         });
     }

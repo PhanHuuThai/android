@@ -8,7 +8,11 @@ import com.example.coffeeapp.model.productOrdered;
 import java.util.List;
 
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.observers.DisposableSingleObserver;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,21 +30,22 @@ public class ProductOrderApiService {
                 .create(CoffeeApi.class);
     }
 
-   public Single<List<productOrdered>> GetAllPBO(){
-        return api.getAllPBO();
+   public Single<List<productOrdered>> GetAllPBO(String key){
+        return api.getPBO(key);
    }
    public void deletePBO(String resourceId) {
-       Log.d("DEBUG","22222");
-        Call<Void> call = api.deletePBO(resourceId);
-        call.enqueue(new Callback<Void>() {
-           @Override
-           public void onResponse(Call<Void> call, Response<Void> response) {
-               Log.d("DEBUG","thanh cong");
-           }
-            @Override
-           public void onFailure(Call<Void> call, Throwable t) {
-                Log.d("DEBUG","chua thanh cong");
-           }
-       });
+        Single<Void> call = api.deletePBO(resourceId);
+        call.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Void>() {
+                    @Override
+                    public void onSuccess(@NonNull Void unused) {
+                        Log.d("DEBUG","ThanhCong");
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("DEBUG","ThatBai "+e.getMessage());
+                    }
+                });;
     }
 }
