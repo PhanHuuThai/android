@@ -71,7 +71,9 @@ public class AllStaff extends AppCompatActivity {
 
         staffList = new ArrayList<>();
         staffList.add(new Staff(102,"Tran Van Hai","22/8/2002",384535073,"nguya","tamloc",12,70000));
-
+        staffList.add(new Staff(102,"Phan Huu Thai","17/52002",384535073,"nguya","tamloc",12,70000));
+        staffList.add(new Staff(102,"Nguyen Hoang Vu","02/9/2002",384535073,"nguya","tamloc",12,70000));
+        staffList.add(new Staff(102,"Nguyen Dac Duc","27/4/2002",384535073,"nguya","tamloc",12,70000));
 
         Log.d("aaaa", Integer.toString(staffList.size()));
         rv_staff = findViewById(R.id.rv_staff);
