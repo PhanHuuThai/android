@@ -18,7 +18,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_AddProduct"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/ic_baseline_control_point_24"
@@ -63,7 +63,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/SPN_getValueName"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -92,7 +92,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txt_getValueSalePrice"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
