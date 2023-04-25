@@ -34,9 +34,10 @@ public class AllStaff extends AppCompatActivity {
     private RecyclerView rv_staff;
     private ArrayList<Staff> staffList;
     private StaffApiService staffService;
-    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
+    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu,btnaddd;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,14 @@ public class AllStaff extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-
+        btnaddd = findViewById(R.id.ButtonADD);
+        btnaddd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(AllStaff.this,information_staff.class);
+                startActivity(intent);
+            }
+        });
 
         btnthongtin= findViewById(R.id.btn_thongtin);
         btnthongtin.setOnClickListener(new View.OnClickListener() {

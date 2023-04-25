@@ -91,8 +91,7 @@ public class RevenueView extends AppCompatActivity {
             }
 
         }
-        tvVenenueDay = (TextView) findViewById(R.id.tvRenevueDay);
-        tvVenenueDay.setText(String.valueOf(sumVenenue));
+
         sumVenenue = 0;
 //        for (revenueM item : revenueMList
 //        ) {
@@ -103,7 +102,6 @@ public class RevenueView extends AppCompatActivity {
 //            }
 //
 //        }
-        tvVenenueMonth = (TextView) findViewById(R.id.tvRenevueMonth);
-        tvVenenueMonth.setText(String.valueOf(sumVenenue));
+
     }
 }
