@@ -22,7 +22,7 @@ public class personal_information extends Activity {
         adress = findViewById(R.id.edit_IDdiachi);
         salary = findViewById(R.id.edit_luong);
         Log.d("DEBUG","personal_information");
-        id.setText(String.valueOf(in.getIntExtra("id",0)));
+        id.setText(in.getStringExtra("id"));
         name.setText(in.getStringExtra("Fullname"));
         date.setText(in.getStringExtra("Dayofbirth"));
         phone.setText(in.getStringExtra("Phonenumber"));

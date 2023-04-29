@@ -22,6 +22,6 @@ public interface CoffeeApi {
     Single<Void> deletePBO(@Path("productId") String productId);
     @GET("EmployeeServlet/{key}")
     Single<List<Staff>> getStaff(@Path("key") String key);
-    @POST("EmployeeServlet/{account}")
+    @GET("AccountServlet/{account}")
     Single<account> CheckLogin(@Path("account")String account);
 }

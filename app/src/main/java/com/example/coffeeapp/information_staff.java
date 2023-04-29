@@ -83,47 +83,47 @@ public class information_staff extends Activity {
                 startActivity(intent);
             }
         });
-//        id = findViewById(R.id.edit_ID);
-//        name = findViewById(R.id.edit_Name);
-//        date = findViewById(R.id.edit_DateBirth);
-//        phone = findViewById(R.id.edit_phone);
-//        email = findViewById(R.id.edit_Mail);
-//        adress = findViewById(R.id.edit_IDCard);
-//        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-//        userName = sharedpreferences.getString(EMAIL_KEY,null);
-//        Log.d("DEBUG",userName);
-////        apiService = new StaffApiService();
-////        apiService.GetAllStaff(userName).subscribeOn(Schedulers.newThread())
-////                .observeOn(AndroidSchedulers.mainThread())
-////                .subscribeWith(new DisposableSingleObserver<List<Staff>>() {
-////                    @Override
-////                    public void onSuccess(@NonNull List<Staff> staff) {
-////                        for (Staff item:staff){
-////                            id.setText(String.valueOf(item.getId()));
-////                            name.setText(item.getName());
-////                            date.setText(item.getDayofbirth());
-////                            phone.setText(item.getPhonenumber());
-////                            email.setText(item.getEmail());
-////                            adress.setText(item.getAddress());
-////                            Log.d("DEBUG1",item.toString());
-////                        }
-////                    }
-////                    @Override
-////                    public void onError(@NonNull Throwable e) {
-////                        Toast.makeText(information_staff.this, "Không có thông tin !", Toast.LENGTH_SHORT).show();
-////                    }
-////                });
-//
-//        btnLogout = findViewById(R.id.btnLogout);
-//        btnLogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SharedPreferences.Editor editor = sharedpreferences.edit();
-//                editor.clear();
-//                editor.apply();
-//                Intent intent = new Intent(information_staff.this, Login.class);
-//                startActivity(intent);
-//            }
-//        });
+        id = findViewById(R.id.edit_ID);
+        name = findViewById(R.id.edit_Name);
+        date = findViewById(R.id.edit_DateBirth);
+        phone = findViewById(R.id.edit_phone);
+        email = findViewById(R.id.edit_Mail);
+        adress = findViewById(R.id.edit_IDCard);
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        userName = sharedpreferences.getString(EMAIL_KEY,null);
+        Log.d("DEBUG",userName);
+        apiService = new StaffApiService();
+        apiService.GetAllStaff(userName).subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<Staff>>() {
+                    @Override
+                    public void onSuccess(@NonNull List<Staff> staff) {
+                        for (Staff item:staff){
+                            id.setText(String.valueOf(item.getId()));
+                            name.setText(item.getName());
+                            date.setText(item.getDayofbirth());
+                            phone.setText(item.getPhonenumber());
+                            email.setText(item.getEmail());
+                            adress.setText(item.getAddress());
+                            Log.d("DEBUG1",item.toString());
+                        }
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Toast.makeText(information_staff.this, "Không có thông tin !", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(information_staff.this, Login.class);
+                startActivity(intent);
+            }
+        });
     }
 }

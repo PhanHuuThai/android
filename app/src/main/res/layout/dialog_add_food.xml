@@ -159,7 +159,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_black_corner_10"
+                android:background="@drawable/bg_pink_eb5f54_corner_10"
                 android:text="Huỷ"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -176,7 +176,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="55dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_pink_eb5f54_corner_10"
+                android:background="@drawable/back_green"
                 android:text="Thêm"
                 android:textSize="14sp" />
         </LinearLayout>

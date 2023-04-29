@@ -5,7 +5,7 @@ import java.util.Date;
 import com.google.gson.annotations.SerializedName;
 public class Staff {
     @SerializedName("id")
-    private int id;
+    private String id;
     @SerializedName("fullName")
     private String name;
     @SerializedName("phoneNumber")
@@ -23,7 +23,7 @@ public class Staff {
     @SerializedName("workHour")
     private int numberworkingday;
 
-    public Staff(int id, String name, String phonenumber, String email, String dayofbirth, String address, String username, int salary, int numberworkingday) {
+    public Staff(String id, String name, String phonenumber, String email, String dayofbirth, String address, String username, int salary, int numberworkingday) {
         this.id = id;
         this.name = name;
         this.phonenumber = phonenumber;
@@ -35,11 +35,11 @@ public class Staff {
         this.numberworkingday = numberworkingday;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

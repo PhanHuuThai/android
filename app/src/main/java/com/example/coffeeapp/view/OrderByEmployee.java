@@ -52,7 +52,7 @@ public class OrderByEmployee extends AppCompatActivity {
     private FloatingActionButton btnAdd;
     private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
 
-    int idProductOrdered  = 0;
+    String idProductOrdered  = "";
     int quantity = 0;
     double salePrice = 0;
     String nameProductOrdered= "";

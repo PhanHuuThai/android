@@ -21,6 +21,7 @@ import com.example.coffeeapp.viewmodel.ProducctOrderAdapter;
 import com.example.coffeeapp.viewmodel.ProductOrderApiService;
 import com.example.coffeeapp.viewmodel.StaffAdapter;
 import com.example.coffeeapp.viewmodel.StaffApiService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,8 @@ public class AllStaff extends AppCompatActivity {
     private RecyclerView rv_staff;
     private ArrayList<Staff> staffList;
     private StaffApiService staffService;
-    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu,btnaddd;
+    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
+    private FloatingActionButton btnaddd;
 
 
     @SuppressLint("MissingInflatedId")
@@ -87,6 +89,7 @@ public class AllStaff extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Log.d("DEBUG","DBDBDB");
         staffService = new StaffApiService();
         List<Staff> list = new ArrayList<>();
         rv_staff = findViewById(R.id.rv_staff);
