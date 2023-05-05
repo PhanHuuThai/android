@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StaffApiService {
-    private  static final String baseURL= "http://103.197.185.4:8081/coffeeapp-api-json_war/";
+    private  static final String baseURL= "http://103.197.185.4:8081/coffeeapp-api-json/";
     private CoffeeApi api;
     public StaffApiService(){
         api = new Retrofit.Builder().baseUrl(baseURL)

@@ -13,13 +13,17 @@ public class productOrdered {
     private  int quantity;
     @SerializedName("image")
     private String image;
+    @SerializedName("idCatelory")
+    private  String idCategory;
 
-    public productOrdered(String id, String name, double salePrice, int quantity, String image) {
+
+    public productOrdered(String id, String name, double salePrice, int quantity, String image,String idCategory) {
         this.id = id;
         this.name = name;
         this.salePrice = salePrice;
         this.quantity = quantity;
         this.image = image;
+        this.idCategory= idCategory;
     }
 
     public String getId() {

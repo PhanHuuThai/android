@@ -62,9 +62,9 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
                 e.putExtra("email",staff.getEmail());
                 e.putExtra("Dayofbirth",staff.getDayofbirth());
                 e.putExtra("Address",staff.getAddress());
-                e.putExtra("Username",staff.getUsername());
+                e.putExtra("Username",staff.getImageEmployee());
                 e.putExtra("Salary",staff.getSalary());
-                e.putExtra("Numberworkingday",staff.getNumberworkingday());
+                e.putExtra("Numberworkingday",staff.getWorkHour());
                 Log.d("DEBUG","StaffAdapter_1");
                 context.startActivity(e);
 
