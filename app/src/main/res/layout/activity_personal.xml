@@ -360,16 +360,23 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="154dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="Đăng xuất"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Đăng xuất"
 
-            />
+                />
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="393dp"

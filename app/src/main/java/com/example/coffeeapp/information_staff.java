@@ -91,6 +91,7 @@ public class information_staff extends Activity {
         adress = findViewById(R.id.edit_IDCard);
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         userName = sharedpreferences.getString(EMAIL_KEY,null);
+        //ri là nó gán userName = id rồi đó,lấy ra dùng thôi,muốn biết hắn được hay chưa thì log ra như dòng ở duopiws
         Log.d("DEBUG",userName);
         apiService = new StaffApiService();
         apiService.GetAllStaff(userName).subscribeOn(Schedulers.newThread())

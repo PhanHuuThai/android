@@ -2,7 +2,10 @@ package com.example.coffeeapp.model;
 
 import android.util.Log;
 
+import com.example.coffeeapp.bean.Bill;
+import com.example.coffeeapp.bean.BillDetail;
 import com.example.coffeeapp.bean.Staff;
+import com.example.coffeeapp.bean.Table;
 
 import java.util.List;
 
@@ -16,12 +19,18 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CoffeeApi {
-    @GET("ProductByOrderServlet/{key}")
+    @GET("ProductServlet/{key}")
     Single<List<productOrdered>> getPBO(@Path("key") String key);
-    @DELETE("ProductByOrderServlet/{productId}")
+    @DELETE("ProductServlet/{productId}")
     Single<Void> deletePBO(@Path("productId") String productId);
     @GET("EmployeeServlet/{key}")
     Single<List<Staff>> getStaff(@Path("key") String key);
     @GET("AccountServlet/{account}")
     Single<account> CheckLogin(@Path("account")String account);
+    @GET("TableServlet/{key}")
+    Single<List<Table>> getTable(@Path("key") String key);
+    @GET("OrderServlet/{key}")
+    Single<List<Bill>> getBill(@Path("key") String key);
+    @POST("OrderServlet/{key}")
+    Single<List<BillDetail>> getBillDetail(@Path("key") String key);
 }

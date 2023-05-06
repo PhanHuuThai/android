@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,13 +13,22 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.coffeeapp.bean.Bill;
+import com.example.coffeeapp.bean.Table;
+import com.example.coffeeapp.viewmodel.BillApiService;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.observers.DisposableSingleObserver;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class AllBill extends AppCompatActivity {
 
     private RecyclerView rv_bill;
     private ArrayList<Bill> billList;
+    private BillApiService billService;
     private CustomBill customBill;
     private Button bt_Menu, bt_Table,bt_Bill,bt_AboutMe;
     @Override
@@ -28,11 +38,9 @@ public class AllBill extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        billService = new BillApiService();
+
         billList = new ArrayList<>();
-        billList.add(new Bill("HD01", 70000, "15.44"));
-        billList.add(new Bill("HD02", 65000, "16.00"));
-        billList.add(new Bill("HD03", 50000, "16.25"));
-        billList.add(new Bill("HD04", 45000, "15.30"));
 
         Log.d("aaaa", Integer.toString(billList.size()));
         rv_bill = findViewById(R.id.rv_bill);
@@ -40,6 +48,23 @@ public class AllBill extends AppCompatActivity {
         rv_bill.setLayoutManager(new LinearLayoutManager(this));
         customBill = new CustomBill(billList, AllBill.this);
         rv_bill.setAdapter(customBill);
+        billService.getAllBill("All")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<Bill>>() {
+                    @Override
+                    public void onSuccess(@NonNull List<Bill> bills) {
+                        for(Bill item : bills){
+                            billList.add(item);
+                            customBill.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
 
         bt_Menu= findViewById(R.id.button_Menu) ;
         bt_Menu.setOnClickListener(new View.OnClickListener()

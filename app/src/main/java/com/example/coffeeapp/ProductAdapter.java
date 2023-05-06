@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.bean.Product;
+import com.example.coffeeapp.model.productOrdered;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private View v;
     private TextInputEditText txtsize , txtsoluong,txtchuthich ;
     private Button bt_huy, bt_them,btorder ;
-    public ProductAdapter(ArrayList<Product> contactList, Context context , View view)
+    public ProductAdapter(ArrayList<productOrdered> contactList, Context context , View view)
     {
         this.v=view ;
         this.m_context=context ;
@@ -44,12 +45,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }
         });
     }
-    public ProductAdapter(ArrayList<Product> contactList)
+    public ProductAdapter(ArrayList<productOrdered> contactList)
     {
         this.ContactList = contactList;
     }
 
-        private ArrayList<Product> ContactList ;
+        private ArrayList<productOrdered> ContactList ;
         @NonNull
         @Override
         public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -64,7 +65,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position)
         {
             holder.tvname.setText(ContactList.get(position).getName());
-            holder.tvprice.setText(String.valueOf(ContactList.get(position).getPrice()));
+            holder.tvprice.setText(String.valueOf(ContactList.get(position).getSalePrice()));
             holder.image.setImageResource(R.drawable.hampogar) ;
             holder.bt.setOnClickListener(new View.OnClickListener()
             {

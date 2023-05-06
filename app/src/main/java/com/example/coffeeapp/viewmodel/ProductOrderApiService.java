@@ -20,7 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductOrderApiService {
-    private  static final String baseURL= "http://10.0.2.2:8080/";
+    private  static final String baseURL= "http://103.197.185.4:8081/coffeeapp-api-json/";
     private CoffeeApi api;
     public ProductOrderApiService(){
         api = new Retrofit.Builder().baseUrl(baseURL)
