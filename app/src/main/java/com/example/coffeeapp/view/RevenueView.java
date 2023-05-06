@@ -74,34 +74,7 @@ public class RevenueView extends AppCompatActivity {
 
 
 
-        List<revenueM> revenueMList = new ArrayList<>();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            revenueMList.add(new revenueM(LocalDate.of(2023, 12, 5), 200000));
-            revenueMList.add(new revenueM(LocalDate.of(2023, 12, 5), 200000));
-            revenueMList.add(new revenueM(LocalDate.of(2023, 12, 5), 200000));
-            revenueMList.add(new revenueM(LocalDate.of(2023, 12, 5), 200000));
-        }
-        editTextDay = (EditText) findViewById(R.id.editTextDateDay);
-        for (revenueM item : revenueMList
-        ) {
-            System.out.println(editTextDay.getText());
-            System.out.println(String.valueOf(item.getDate()));
-            if(editTextDay.getText().equals(String.valueOf(item.getDate()))){
-                sumVenenue += item.getRevenue();
-            }
 
-        }
-
-        sumVenenue = 0;
-//        for (revenueM item : revenueMList
-//        ) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                if(editTextMonth.getText().toString().contains(item.getDate().getMonth().toString())){
-//                    sumVenenue += item.getRevenue();
-//                }
-//            }
-//
-//        }
 
     }
 }

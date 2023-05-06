@@ -30,4 +30,5 @@ public interface CoffeeApi {
     Single<Void>addProduct(@Body productOrdered product);
     @GET("CategoryServlet/{key}")
     Single<List<category>> getCategory(@Path("key") String key);
+
 }
