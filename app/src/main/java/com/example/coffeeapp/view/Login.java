@@ -76,6 +76,7 @@ public class Login extends AppCompatActivity {
                                 sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.putString(EMAIL_KEY, accounter.getUserName());
+                                //Dòng ni lưa username tức là id
                                 editor.putString(PASSWORD_KEY, accounter.getPassWord());
                                 editor.apply();
                                 Log.d("DEBUG", accounter.toString());

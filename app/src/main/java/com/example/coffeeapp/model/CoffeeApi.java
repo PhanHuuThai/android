@@ -2,8 +2,11 @@ package com.example.coffeeapp.model;
 
 import android.util.Log;
 
+import com.example.coffeeapp.bean.Bill;
+import com.example.coffeeapp.bean.BillDetail;
 import com.example.coffeeapp.bean.Product;
 import com.example.coffeeapp.bean.Staff;
+import com.example.coffeeapp.bean.Table;
 
 import java.util.List;
 
@@ -26,6 +29,12 @@ public interface CoffeeApi {
     Single<List<Staff>> getStaff(@Path("key") String key);
     @GET("AccountServlet/{account}")
     Single<account> CheckLogin(@Path("account")String account);
+    @GET("TableServlet/{key}")
+    Single<List<Table>> getTable(@Path("key") String key);
+    @GET("OrderServlet/{key}")
+    Single<List<Bill>> getBill(@Path("key") String key);
+    @POST("OrderServlet/{key}")
+    Single<List<BillDetail>> getBillDetail(@Path("key") String key);
     @PUT("ProductServlet")
     Single<Void>addProduct(@Body productOrdered product);
     @GET("CategoryServlet/{key}")

@@ -11,16 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.bean.Product;
+import com.example.coffeeapp.model.productOrdered;
 
 import java.util.ArrayList;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
-    public MenuAdapter(ArrayList<Product> contactList) {
+    public MenuAdapter(ArrayList<productOrdered> contactList) {
         this.ContactList = contactList;
     }
 
-        private ArrayList<Product> ContactList ;
+        private ArrayList<productOrdered> ContactList ;
         @NonNull
         @Override
         public MenuAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -35,7 +36,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position)
         {
             holder.tvname.setText(ContactList.get(position).getName());
-            holder.tvprice.setText(String.valueOf(ContactList.get(position).getPrice()));
+            holder.tvprice.setText(String.valueOf(ContactList.get(position).getSalePrice()));
             holder.image.setImageResource(R.drawable.hampogar) ;
             holder.bt.setVisibility(View.GONE);
         }

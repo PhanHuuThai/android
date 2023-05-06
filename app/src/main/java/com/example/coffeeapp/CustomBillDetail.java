@@ -1,5 +1,6 @@
 package com.example.coffeeapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.coffeeapp.bean.BillDetail;
+import com.example.coffeeapp.model.productOrdered;
 
 import java.util.ArrayList;
 
 public class CustomBillDetail extends RecyclerView.Adapter<CustomBillDetail.ViewHolder>{
     private ArrayList<BillDetail> BillDetailList ;
+    private ArrayList<productOrdered> productList;
     private int value = 0;
 
-    public CustomBillDetail(ArrayList<BillDetail> billDetailList) {
+    public CustomBillDetail(ArrayList<BillDetail> billDetailList, ArrayList<productOrdered> ProductList) {
         BillDetailList = billDetailList;
+        productList = ProductList;
+        Log.d("thai1", BillDetailList.toString());
     }
 
     @NonNull
@@ -41,11 +46,13 @@ public class CustomBillDetail extends RecyclerView.Adapter<CustomBillDetail.View
         if(position < BillDetailList.size()){
 
             BillDetail billDetail = BillDetailList.get(position);
-            holder.tv_name.setText(billDetail.getName());
-            holder.tv_size.setText(billDetail.getSize());
+            productOrdered product = productList.get(position);
+
+            holder.tv_name.setText(product.getName());
+            holder.tv_size.setText("");
             holder.tv_SL.setText(Integer.toString(billDetail.getQuantity()));
-            holder.tv_thanhtien.setText((Integer.toString(billDetail.getQuantity()*billDetail.getPrice()))+"đ");
-            value += billDetail.getQuantity()*billDetail.getPrice();
+            holder.tv_thanhtien.setText((Integer.toString(billDetail.getQuantity()*(int)product.getSalePrice()))+"đ");
+            value += billDetail.getQuantity()*(int)product.getSalePrice();
         } else {
             holder.tv_name.setText("Tổng tiền");
             holder.tv_size.setText("");

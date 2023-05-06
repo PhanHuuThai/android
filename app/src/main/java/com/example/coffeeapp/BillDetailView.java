@@ -13,31 +13,54 @@ import android.widget.Button;
 
 
 import com.example.coffeeapp.bean.BillDetail;
+import com.example.coffeeapp.model.productOrdered;
+import com.example.coffeeapp.viewmodel.BillDetailApiService;
+import com.example.coffeeapp.viewmodel.ProductOrderApiService;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.observers.DisposableSingleObserver;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class BillDetailView extends AppCompatActivity {
 
     private RecyclerView rv_billdetail;
-    private ArrayList<BillDetail> billDetails;
+    private ArrayList<BillDetail> billDetailsList;
+    private ArrayList<productOrdered> productOrderedsList;
     private CustomBillDetail customBillDetail;
     private Button btn_Thoat;
+    private BillDetailApiService billDetailApiService;
+    private ProductOrderApiService productOrderApiService;
+    private String idOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_detail);
 
+        billDetailApiService = new BillDetailApiService();
+        productOrderApiService = new ProductOrderApiService();
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        Intent e = getIntent();
+        if(e != null){
+            idOrder = e.getStringExtra("idOrder");
+        }
+        Log.d("thai", idOrder);
 
-        billDetails = new ArrayList<>();
 
-        billDetails.add(new BillDetail(0,"cà phê sữa", "M", 1, 25000));
-        billDetails.add(new BillDetail(2,"Trà sữa", "L", 2, 30000));
-        billDetails.add(new BillDetail(3,"Trà chanh", "M", 1, 20000));
+        billDetailsList = new ArrayList<>();
+        productOrderedsList = new ArrayList<>();
+
+
 
         rv_billdetail = findViewById(R.id.rv_billdetail);
         btn_Thoat = findViewById(R.id.btn_thoat);
+
+
 
         btn_Thoat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +71,44 @@ public class BillDetailView extends AppCompatActivity {
         });
 
         rv_billdetail.setLayoutManager(new LinearLayoutManager(this));
-        customBillDetail = new CustomBillDetail(billDetails);
+        customBillDetail = new CustomBillDetail(billDetailsList, productOrderedsList);
         rv_billdetail.setAdapter(customBillDetail);
+        billDetailApiService.getAllBillDetail(idOrder)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<BillDetail>>() {
+                    @Override
+                    public void onSuccess(@NonNull List<BillDetail> billDetails) {
+                        for (BillDetail billDetail : billDetails){
+                            billDetailsList.add(billDetail);
+                            //customBillDetail.notifyDataSetChanged();
+                            productOrderApiService.GetAllPBO(billDetail.getIdProduct())
+                                        .subscribeOn(Schedulers.newThread())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
+                                        @Override
+                                        public void onSuccess(@NonNull List<productOrdered> productOrdereds) {
+                                            for(productOrdered product : productOrdereds){
+                                                productOrderedsList.add(product);
+                                                customBillDetail.notifyDataSetChanged();
+                                                Log.d("qq", "sucsess");
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onError(@NonNull Throwable e) {
+                                            e.printStackTrace();
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
+
+
     }
 }

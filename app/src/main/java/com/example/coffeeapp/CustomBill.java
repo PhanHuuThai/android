@@ -51,13 +51,14 @@ public class CustomBill extends RecyclerView.Adapter<CustomBill.ViewHolder>{
         Bill bill = BillList.get(position);
         holder.img_tien.setImageResource(R.drawable.icon_tien);
         holder.tv_billid.setText(bill.getId());
-        holder.tv_gia.setText(Integer.toString(bill.getPrice()));
+        holder.tv_gia.setText(Double.toString(bill.getPrice()));
         holder.tv_time.setText(bill.getTime());
         holder.btn_Xem.setImageResource(R.drawable.icon_kinhlup);
         holder.btn_Xem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent e = new Intent(context, BillDetailView.class);
+                e.putExtra("idOrder", bill.getId());
                 context.startActivity(e);
             }
         });

@@ -67,33 +67,6 @@
     </LinearLayout>
 
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart"
-        android:layout_width="408dp"
-        android:layout_height="282dp"
-        android:padding="8dp"
-        app:dragEnabled="true"
-        app:highlightPerDragEnabled="false"
-        app:highlightPerTapEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523"
-        app:leftYAxisTextColor="#333333"
-        app:leftYAxisTextSize="12sp"
-        app:legendTextColor="#333333"
-        app:legendTextSize="14sp"
-        app:markerTextColor="#ffffff"
-        app:markerTextSize="14sp"
-        app:rightYAxisTextColor="#333333"
-        app:rightYAxisTextSize="12sp"
-        app:scaleEnabled="true"
-        app:xAxisTextColor="#333333"
-        app:xAxisTextSize="12sp"
-        tools:ignore="MissingClass" />
-
     <TextView
         android:id="@+id/textView11"
         android:layout_width="187dp"
