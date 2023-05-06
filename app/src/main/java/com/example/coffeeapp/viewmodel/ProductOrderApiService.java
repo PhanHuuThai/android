@@ -3,6 +3,7 @@ package com.example.coffeeapp.viewmodel;
 import android.util.Log;
 
 import com.example.coffeeapp.model.CoffeeApi;
+import com.example.coffeeapp.model.category;
 import com.example.coffeeapp.model.productOrdered;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProductOrderApiService {
     private  static final String baseURL= "http://103.197.185.4:8081/coffeeapp-api-json/";
+
     private CoffeeApi api;
     public ProductOrderApiService(){
         api = new Retrofit.Builder().baseUrl(baseURL)
@@ -33,8 +35,27 @@ public class ProductOrderApiService {
    public Single<List<productOrdered>> GetAllPBO(String key){
         return api.getPBO(key);
    }
+    public Single<List<category>> GetAllCategory(String key){
+        return api.getCategory(key);
+    }
    public void deletePBO(String resourceId) {
         Single<Void> call = api.deletePBO(resourceId);
+        call.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Void>() {
+                    @Override
+                    public void onSuccess(@NonNull Void unused) {
+                        Log.d("DEBUG","ThanhCong");
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("DEBUG","ThatBai "+e.getMessage());
+                    }
+                });;
+    }
+    public  void addProduct(String id,String name,double salePrice,int quantity,String image,String idCategory){
+        productOrdered productOrdered = new productOrdered(id, name, salePrice, quantity, image,idCategory);
+        Single<Void> call = api.addProduct(productOrdered);
         call.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<Void>() {

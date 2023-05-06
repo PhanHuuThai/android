@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.coffeeapp.bean.Bill;
 import com.example.coffeeapp.bean.BillDetail;
+import com.example.coffeeapp.bean.Product;
 import com.example.coffeeapp.bean.Staff;
 import com.example.coffeeapp.bean.Table;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import io.reactivex.rxjava3.core.Single;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -33,4 +35,8 @@ public interface CoffeeApi {
     Single<List<Bill>> getBill(@Path("key") String key);
     @POST("OrderServlet/{key}")
     Single<List<BillDetail>> getBillDetail(@Path("key") String key);
+    @PUT("ProductServlet")
+    Single<Void>addProduct(@Body productOrdered product);
+    @GET("CategoryServlet/{key}")
+    Single<List<category>> getCategory(@Path("key") String key);
 }

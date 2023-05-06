@@ -7,32 +7,32 @@ public class Staff {
     @SerializedName("id")
     private String id;
     @SerializedName("fullName")
-    private String name;
+    private String fullName;
     @SerializedName("phoneNumber")
-    private String phonenumber;
+    private String phoneNumber;
     @SerializedName("email")
     private String email;
     @SerializedName("dateOfBirth")
-    private String dayofbirth;
+    private String dateOfBirth;
     @SerializedName("address")
     private String address;
-    @SerializedName("userName")
-    private String username;
+    @SerializedName("imageEmployee")
+    private String imageEmployee;
     @SerializedName("salary")
     private int salary;
     @SerializedName("workHour")
-    private int numberworkingday;
+    private int workHour;
 
-    public Staff(String id, String name, String phonenumber, String email, String dayofbirth, String address, String username, int salary, int numberworkingday) {
+    public Staff(String id, String name, String phonenumber, String email, String dayofbirth, String address, String imageEmployee, int salary, int numberworkingday) {
         this.id = id;
-        this.name = name;
-        this.phonenumber = phonenumber;
+        this.fullName = name;
+        this.phoneNumber = phonenumber;
         this.email = email;
-        this.dayofbirth = dayofbirth;
+        this.dateOfBirth = dayofbirth;
         this.address = address;
-        this.username = username;
+        this.imageEmployee = imageEmployee;
         this.salary = salary;
-        this.numberworkingday = numberworkingday;
+        this.workHour = numberworkingday;
     }
 
     public String getId() {
@@ -44,19 +44,19 @@ public class Staff {
     }
 
     public String getName() {
-        return name;
+        return fullName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.fullName = name;
     }
 
     public String getPhonenumber() {
-        return phonenumber;
+        return phoneNumber;
     }
 
     public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phonenumber;
     }
 
     public String getEmail() {
@@ -68,11 +68,11 @@ public class Staff {
     }
 
     public String getDayofbirth() {
-        return dayofbirth;
+        return dateOfBirth;
     }
 
     public void setDayofbirth(String dayofbirth) {
-        this.dayofbirth = dayofbirth;
+        this.dateOfBirth = dayofbirth;
     }
 
     public String getAddress() {
@@ -83,12 +83,12 @@ public class Staff {
         this.address = address;
     }
 
-    public String getUsername() {
-        return username;
+    public String getImageEmployee() {
+        return imageEmployee;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setImageEmployee(String imageEmployee) {
+        this.imageEmployee = imageEmployee;
     }
 
     public int getSalary() {
@@ -99,11 +99,11 @@ public class Staff {
         this.salary = salary;
     }
 
-    public int getNumberworkingday() {
-        return numberworkingday;
+    public int getWorkHour() {
+        return workHour;
     }
 
-    public void setNumberworkingday(int numberworkingday) {
-        this.numberworkingday = numberworkingday;
+    public void setWorkHour(int workHour) {
+        this.workHour = workHour;
     }
 }
