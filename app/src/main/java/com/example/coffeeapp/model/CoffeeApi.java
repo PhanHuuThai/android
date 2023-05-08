@@ -42,5 +42,4 @@ public interface CoffeeApi {
     @PUT("OrderServlet/AddOrder")
     Single<Void>addBill(@Body List<Object> list);
 
-
 }
