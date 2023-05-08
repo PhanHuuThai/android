@@ -107,4 +107,19 @@ public class Staff {
     public void setWorkHour(int workHour) {
         this.workHour = workHour;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "id='" + id + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", address='" + address + '\'' +
+                ", imageEmployee='" + imageEmployee + '\'' +
+                ", salary=" + salary +
+                ", workHour=" + workHour +
+                '}';
+    }
 }
