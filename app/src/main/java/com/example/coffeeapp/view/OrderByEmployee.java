@@ -218,7 +218,7 @@ public class OrderByEmployee extends AppCompatActivity {
 
             }
         });
-         btnAddProduct = dialog.findViewById(R.id.btn_AddProduct);
+        btnAddProduct = dialog.findViewById(R.id.btn_AddProduct);
         btnAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

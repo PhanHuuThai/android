@@ -6,10 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.coffeeapp.AllStaff;
-import com.example.coffeeapp.MenuActivity;
-import com.example.coffeeapp.PersonalActivity;
-import com.example.coffeeapp.information_staff;
+import com.example.coffeeapp.registers;
 
 public class MainActivity extends AppCompatActivity {
 

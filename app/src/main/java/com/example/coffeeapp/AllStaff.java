@@ -17,6 +17,7 @@ import com.example.coffeeapp.model.productOrdered;
 import com.example.coffeeapp.view.EmployeeTimekeepingV;
 import com.example.coffeeapp.view.OrderByEmployee;
 import com.example.coffeeapp.view.RevenueView;
+//import com.example.coffeeapp.view.register;
 import com.example.coffeeapp.viewmodel.ProducctOrderAdapter;
 import com.example.coffeeapp.viewmodel.ProductOrderApiService;
 import com.example.coffeeapp.viewmodel.StaffAdapter;
@@ -89,6 +90,14 @@ public class AllStaff extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnaddd = findViewById(R.id.ButtonADD);
+        btnaddd.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(AllStaff.this, registers.class);
+                startActivity(intent);
+            }
+        }));
         Log.d("DEBUG","DBDBDB");
         staffService = new StaffApiService();
         List<Staff> list = new ArrayList<>();
@@ -118,5 +127,6 @@ public class AllStaff extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 });
+
     }
 }

@@ -17,6 +17,7 @@ import com.example.coffeeapp.R;
 import com.example.coffeeapp.bean.Staff;
 import com.example.coffeeapp.personal_information;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,10 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull StaffAdapter.ViewHolder holder, int position) {
 
         Staff staff = StaffList.get(position);
-        holder.img_staff.setImageResource(R.drawable.icon_nhanvien);
+//        holder.img_staff.setImageResource(R.drawable.icon_nhanvien);
+        if(!staff.getImageEmployee().equals("")){
+            Picasso.get().load(staff.getImageEmployee()).resize(200,200).into(holder.img_staff);
+        }
         holder.tv_name.setText(staff.getName());
         holder.tv_salary.setText(String.valueOf(staff.getSalary()));
         holder.btn_Xem.setImageResource(R.drawable.icon_kinhlup);
