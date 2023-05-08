@@ -39,5 +39,8 @@ public interface CoffeeApi {
     Single<Void>addProduct(@Body productOrdered product);
     @GET("CategoryServlet/{key}")
     Single<List<category>> getCategory(@Path("key") String key);
+    @PUT("OrderServlet/AddOrder")
+    Single<Void>addBill(@Body List<Object> list);
+
 
 }

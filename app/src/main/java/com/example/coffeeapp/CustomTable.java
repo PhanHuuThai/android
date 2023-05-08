@@ -11,10 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coffeeapp.bean.Bill;
+import com.example.coffeeapp.bean.BillDetail;
 import com.example.coffeeapp.bean.Table;
+import com.example.coffeeapp.viewmodel.BillApiService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomTable extends RecyclerView.Adapter<CustomTable.ViewHolder> {
 
@@ -64,6 +68,14 @@ public class CustomTable extends RecyclerView.Adapter<CustomTable.ViewHolder> {
                 Intent e = new Intent(context, OrderActivity.class);
                 e.putExtra("nameTable", TableList.get(k).getName());
                 context.startActivity(e);
+                // Đức - Đoạn dưới t viết ra để thử api đó
+//                BillApiService apiService = new BillApiService();
+//                List<Object> list = new ArrayList<>();
+//
+//                Bill bill = new Bill("HD16","5-6-2022","NV01",35d,"TB04");
+//                list.add(bill);
+//                list.add(new BillDetail("HDCT001","SP02","HD16",5,"Không có"));
+//                apiService.addBill(list);
             }
         });
     }
