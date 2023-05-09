@@ -1,13 +1,17 @@
 package com.example.coffeeapp.view;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -126,6 +130,20 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
                                 }
                             });
                 }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(EmployeeTimekeepingV.this);
+                builder.setMessage("Đã chấm công.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+
+                    }
+                });
+
+
+                builder.show();
+
                 Log.d("RESET",String.valueOf(employeeTimekeepingAdapter.resetList()));
             }
         });

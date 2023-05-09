@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
@@ -147,34 +148,47 @@ public class OrderByEmployee extends AppCompatActivity {
         producctOrderAdapter = new ProducctOrderAdapter(list,apiService);
         rvItems.setAdapter(producctOrderAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(this));
-        apiService.GetAllPBO("All")
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
-                    @SuppressLint("NotifyDataSetChanged")
-                    @Override
-                    public void onSuccess(@NonNull List<productOrdered> productByOrders) {
-                        Log.d("DEBUG","Success");
-                        for (productOrdered item :productByOrders
-                             ) {
-                            Log.d("DEBUG"," "+item.getName());
-                            list.add(item);
-                            producctOrderAdapter.notifyDataSetChanged();
-                        }
-                    }
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                apiService.GetAllPBO("All")
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
+                            @SuppressLint("NotifyDataSetChanged")
+                            @Override
+                            public void onSuccess(@NonNull List<productOrdered> productByOrders) {
+                                Log.d("DEBUG","Success");
+                                list.removeAll(list);
+                                for (productOrdered item :productByOrders
+                                ) {
+                                    Log.d("DEBUG"," "+item.getName()+" "+item.getImage());
+                                    list.add(item);
+                                    producctOrderAdapter.notifyDataSetChanged();
+                                }
+                            }
 
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.d("DEBUG","Fail "+e.getMessage());
-                        e.printStackTrace();
-                    }
-                });
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                Log.d("DEBUG","Fail "+e.getMessage());
+                                e.printStackTrace();
+                            }
+                        });
+                handler.postDelayed(this, 500);
+            }
+
+        };
+        handler.post(runnable);
+
+
 
         btnAdd = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFeedbackDialog(Gravity.CENTER,list,producctOrderAdapter);
+                secureUrl= "";
             }
         });
 
@@ -247,28 +261,6 @@ public class OrderByEmployee extends AppCompatActivity {
                 );
                 Log.d("IMAGE1",secureUrl);
                 dialog.dismiss();
-                apiService.GetAllPBO("All")
-                        .subscribeOn(Schedulers.newThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
-                            @SuppressLint("NotifyDataSetChanged")
-                            @Override
-                            public void onSuccess(@NonNull List<productOrdered> productByOrders) {
-                                Log.d("DEBUG","Success");
-                                list.removeAll(list);;
-                                for (productOrdered item :productByOrders
-                                ) {
-                                    Log.d("DEBUG"," "+item.getName());
-                                    list.add(item);
-                                    producctOrderAdapter.notifyDataSetChanged();
-                                }
-                            }
-                            @Override
-                            public void onError(@NonNull Throwable e) {
-                                Log.d("DEBUG","Fail "+e.getMessage());
-                                e.printStackTrace();
-                            }
-                        });
 
 
             }

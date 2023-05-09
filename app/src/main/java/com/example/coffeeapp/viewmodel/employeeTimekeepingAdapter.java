@@ -21,12 +21,12 @@ import java.util.List;
 public class employeeTimekeepingAdapter  extends RecyclerView.Adapter<employeeTimekeepingAdapter.DataViewHolder>{
     List<Staff> employeeTimekeepings;
     //private Context context;
-    CheckBox checkbox;
+    public CheckBox checkbox;
+
     static List<Staff> timeKeeping = new ArrayList<>();
 
     public employeeTimekeepingAdapter(List<Staff> employeeTimekeepings) {
         this.employeeTimekeepings = employeeTimekeepings;
-        // this.context = context;
     }
     public  static List<Staff> timeKeepingg(){
         return timeKeeping;
@@ -38,7 +38,9 @@ public class employeeTimekeepingAdapter  extends RecyclerView.Adapter<employeeTi
     @Override
     public employeeTimekeepingAdapter.DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.employee_item_timekeeping, parent, false);
-         checkbox = view.findViewById(R.id.checkBox);
+
+        checkbox = view.findViewById(R.id.checkBox);
+
         return new employeeTimekeepingAdapter.DataViewHolder(view);
     }
 
@@ -51,9 +53,9 @@ public class employeeTimekeepingAdapter  extends RecyclerView.Adapter<employeeTi
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-
                     timeKeeping.add(employeeTKP);
                     Log.d("CHECKED","OK");
+                    checkbox.setChecked(false);
                 }
                 if(!isChecked){
                     Log.d("CHECKED","NOT OK");

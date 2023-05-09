@@ -45,11 +45,9 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
     @Override
     public ProducctOrderAdapter.DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_item, parent, false);
-//        apiService = new ProductOrderApiService();
         return new DataViewHolder(view);
     }
     public void filterList(List<productOrdered> foodItems) {
-//        notifyDataSetChanged();
         foodItems = foodItems;
         notifyDataSetChanged();
 
@@ -64,6 +62,13 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
             Picasso.get()
                     .load(PBOItem.getImage())
                     .into(holder.imageView);
+            Log.d("SETPI1","OK");
+        }
+        else {
+            Picasso.get()
+                    .load("https://res.cloudinary.com/dte2ps5qs/image/upload/v1680532302/samples/cloudinary-icon.png")
+                    .into(holder.imageView);
+            Log.d("SETPI","RONG");
         }
 
 
@@ -133,7 +138,6 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
                     for (productOrdered item:foodItems
                          ) {
                         if(item.getName().equals(text)){
-//                            apiService = new ProductOrderApiService();
                             Log.d("DEBUG","id:"+item.getId()
                             );
                             apiService.deletePBO(String.valueOf(item.getId()));
@@ -147,12 +151,6 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
                 }
             });
 
-//            if(Gravity.BOTTOM == gravity){
-//                dialog.setCancelable(true);
-//            }
-//            else {
-//                dialog.setCancelable(false);
-//            }
 
             dialog.show();
         }

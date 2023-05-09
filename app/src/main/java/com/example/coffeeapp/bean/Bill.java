@@ -66,4 +66,14 @@ public class Bill {
     public void setIdTable(String idTable) {
         this.idTable = idTable;
     }
+
+    @Override
+    public String toString() {
+        return "Bill :" +
+                "id='" + id + '\'' +
+                ", time='" + time + '\'' +
+                ", idEmployee='" + idEmployee + '\'' +
+                ", price=" + price +
+                ", idTable='" + idTable ;
+    }
 }
