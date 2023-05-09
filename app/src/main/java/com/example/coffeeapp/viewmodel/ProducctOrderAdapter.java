@@ -60,9 +60,12 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
         holder.tvName.setText(PBOItem.getName());
         holder.tvQuantity.setText(String.valueOf(PBOItem.getQuantity()));
         holder.tvTotal.setText(String.valueOf(PBOItem.getQuantity()*PBOItem.getSalePrice()));
+        if(!PBOItem.getImage().equals("")){
             Picasso.get()
-            .load(PBOItem.getImage())
-            .into(holder.imageView);
+                    .load(PBOItem.getImage())
+                    .into(holder.imageView);
+        }
+
 
     }
 

@@ -89,6 +89,7 @@ public class registers extends AppCompatActivity {
                 list.add(staff);
                 list.add(Account);
                 apiService.addEmployee(list);
+
                 Log.d("DEBUG","AAAAA" +list);
 
                 Intent intent= new Intent(registers.this, AllStaff.class);
@@ -123,7 +124,6 @@ public class registers extends AppCompatActivity {
                             Log.d(TAG, "onStart: " + "started");
 
                         }
-
                         @SuppressLint("RestrictedApi")
                         @Override
                         public void onProgress(String requestId, long bytes, long totalBytes) {

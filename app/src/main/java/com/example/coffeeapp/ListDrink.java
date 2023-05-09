@@ -41,5 +41,20 @@ public class ListDrink extends AppCompatActivity {
         rv_listdrink.setLayoutManager(new LinearLayoutManager(this));
         //customBillDetail = new CustomBillDetail(listDrink);
         rv_listdrink.setAdapter(customBillDetail);
+
     }
+
+    private static String getId(String id){
+        String result= "";
+        int a = Integer.parseInt(id.substring(2));
+        a++;
+        if(a < 10){
+            result = id.substring(0,2) + "0" + Integer.toString(a);
+        }
+        else{
+            result = id.substring(0,2) + Integer.toString(a);
+        }
+        return result;
+    }
+
 }

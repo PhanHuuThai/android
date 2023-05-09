@@ -19,7 +19,7 @@
             android:layout_height="430dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ImagePopup"
                 android:layout_width="202dp"
                 android:layout_height="291dp"
                 app:layout_constraintBottom_toBottomOf="parent"
