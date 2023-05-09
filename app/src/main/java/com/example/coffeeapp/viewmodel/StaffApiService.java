@@ -19,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StaffApiService {
     private  static final String baseURL= "http://103.197.185.4:8081/coffeeapp-api-json/";
+//    private  static final String baseURL= "http://10.0.2.2:8080/";
     private CoffeeApi api;
     public StaffApiService(){
         api = new Retrofit.Builder().baseUrl(baseURL)
@@ -33,6 +34,7 @@ public class StaffApiService {
         return api.getStaff(key);
     }
     public  Single<Void> addEmployee(List<Object> staffs){
+        Log.d("ADDD2","00123");
         api.addEmployee(staffs).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<Void>() {
                     @Override
