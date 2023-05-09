@@ -33,7 +33,7 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
     private RecyclerView rvItems;
     private ArrayList<Staff> staffList;
     private StaffApiService staffService;
-    private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
+    private Button btnnhanvien, btndiemdanh, btnsanpham, btnthongtin, btndoanhthu, btnluu;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -44,11 +44,11 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
         actionBar.hide();
 
 
-        btnthongtin= findViewById(R.id.btn_thongtin);
+        btnthongtin = findViewById(R.id.btn_thongtin);
         btnthongtin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(EmployeeTimekeepingV.this, information_staff.class);
+                Intent intent = new Intent(EmployeeTimekeepingV.this, information_staff.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +57,7 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
         btnsanpham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(EmployeeTimekeepingV.this, OrderByEmployee.class);
+                Intent intent = new Intent(EmployeeTimekeepingV.this, OrderByEmployee.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
         btnnhanvien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(EmployeeTimekeepingV.this, AllStaff.class);
+                Intent intent = new Intent(EmployeeTimekeepingV.this, AllStaff.class);
                 startActivity(intent);
             }
         });
@@ -73,7 +73,7 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
         btndoanhthu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(EmployeeTimekeepingV.this, RevenueView.class);
+                Intent intent = new Intent(EmployeeTimekeepingV.this, RevenueView.class);
                 startActivity(intent);
             }
         });
@@ -90,10 +90,10 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onSuccess(@NonNull List<Staff> staffs) {
-                        Log.d("DEBUG","Success");
-                        for (Staff item :staffs
+                        Log.d("DEBUG", "Success");
+                        for (Staff item : staffs
                         ) {
-                            Log.d("DEBUG"," "+item.getName());
+                            Log.d("DEBUG", " " + item.getName());
                             list.add(item);
                             employeeTimekeepingAdapter.notifyDataSetChanged();
                         }
@@ -101,9 +101,33 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Log.d("DEBUG","Fail "+e.getMessage());
+                        Log.d("DEBUG", "Fail " + e.getMessage());
                         e.printStackTrace();
                     }
                 });
+        btnluu = findViewById(R.id.btn_Luu2);
+        btnluu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Staff> timeKeeped = new ArrayList<>();
+                timeKeeped = employeeTimekeepingAdapter.timeKeepingg();
+                for (Staff item : timeKeeped) {
+                    staffService.CCEmployee(item.getId()).subscribeOn(Schedulers.newThread())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribeWith(new DisposableSingleObserver<Void>() {
+                                @Override
+                                public void onSuccess(@NonNull Void unused) {
+                                    Log.d("TimeKeeping", "Success");
+                                }
+
+                                @Override
+                                public void onError(@NonNull Throwable e) {
+                                    Log.d("TimeKeeping", "Error");
+                                }
+                            });
+                }
+                Log.d("RESET",String.valueOf(employeeTimekeepingAdapter.resetList()));
+            }
+        });
     }
-    }
+}

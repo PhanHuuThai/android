@@ -67,6 +67,6 @@ public class ProductOrderApiService {
                     public void onError(@NonNull Throwable e) {
                         Log.d("DEBUG","ThatBai "+e.getMessage());
                     }
-                });;
+                });
     }
 }

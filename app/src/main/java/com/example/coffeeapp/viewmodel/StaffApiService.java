@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.example.coffeeapp.bean.Staff;
 import com.example.coffeeapp.model.CoffeeApi;
-import com.example.coffeeapp.model.productOrdered;
 
 import java.util.List;
 
@@ -47,6 +46,25 @@ public class StaffApiService {
 
                 });
         return null;
+    }
+    public  void editEmployee(String id, String fullname, String numberphone, String email, String dateofbirth, String address, String imageemployee, int salary, int workhour){
+        Staff staff = new Staff(id,fullname,numberphone,email,dateofbirth,address,imageemployee,salary,workhour);
+        Single<Void> call = api.editEmployee(staff);
+        call.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Void>() {
+                    @Override
+                    public void onSuccess(@NonNull Void unused) {
+                        Log.d("DEBUG","ThanhCong");
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("DEBUG","ThatBai "+e.getMessage());
+                    }
+                });
+    }
+    public Single<Void> CCEmployee(String key){
+        return api.CCEmployee(key);
     }
 
 

@@ -82,40 +82,17 @@ public class registers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 apiService = new StaffApiService();
-//                Log.d("Test","1");
                 List<Object> list= new ArrayList<>();
-//                Log.d("Test","2");
-//                Log.d("Test"," " +editid.getText());
-//                 String id =String.valueOf(editid.getText());
-//                Log.d("Test","3");
-//                 String fullName =String.valueOf(editname.getText());
-//                 String phoneNumber =String.valueOf(editphone.getText());
-//                 String email = String.valueOf(editemail.getText());
-//                 String dateOfBirth = String.valueOf(editdayofbirth.getText());
-//                 String address = String.valueOf(editaddress.getText());
-//                 String imageEmployee = url;
-//                 int salary= Integer.parseInt(String.valueOf(editsalary.getText()));
-//                 int workHour = 0;
-//                 String pass = String.valueOf(editpass.getText());
-//                 int role = 1;
-//                list.add(id);
-//                Log.d("Test","4");
-//                list.add(fullName);
-//                list.add(phoneNumber);
-//                list.add(email);
-//                list.add(dateOfBirth);
-//                list.add(address);
-//                list.add(imageEmployee);
-//                list.add(salary);
-//                list.add(workHour);
-//                list.add(pass);
-//                list.add(role);
+
                 Staff staff = new Staff(String.valueOf(editid.getText()),String.valueOf(editname.getText()),String.valueOf(editphone.getText()),String.valueOf(editemail.getText()),String.valueOf(editdayofbirth.getText()),String.valueOf(editaddress.getText()),url,Integer.parseInt(String.valueOf(editsalary.getText())),0);
                 account Account = new account(String.valueOf(editid.getText()),String.valueOf(editpass.getText()), 1);
                 list.add(staff);
                 list.add(Account);
                 apiService.addEmployee(list);
                 Log.d("DEBUG","AAAAA" +list);
+
+                Intent intent= new Intent(registers.this, AllStaff.class);
+                startActivity(intent);
             }
         });
 

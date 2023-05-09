@@ -24,8 +24,12 @@ import com.example.coffeeapp.bean.Bill;
 import com.example.coffeeapp.information_staff;
 import com.example.coffeeapp.model.revenueM;
 import com.example.coffeeapp.viewmodel.BillApiService;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -171,26 +175,30 @@ public class RevenueView extends AppCompatActivity {
 
 
 
-        LineChart lineChart = findViewById(R.id.line_chart);
+        BarChart barChart = findViewById(R.id.bar_chart);
 
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(0, 10));
-        entries.add(new Entry(1, 20));
-        entries.add(new Entry(2, 30));
-        entries.add(new Entry(3, 40));
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(0, 10));
+        entries.add(new BarEntry(1, 20));
+        entries.add(new BarEntry(2, 30));
+        entries.add(new BarEntry(5, 40));
 
-        LineDataSet dataSet = new LineDataSet(entries, "Label");
+        BarDataSet dataSet = new BarDataSet(entries, "Label");
 
-        LineData lineData = new LineData(dataSet);
-        lineChart.setData(lineData);
-        lineChart.getDescription().setEnabled(false); // remove description label
-        lineChart.getLegend().setEnabled(false);
-        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM); // move X-axis to the bottom
-        lineChart.getXAxis().setDrawGridLines(false); // disable vertical grid lines
-        lineChart.getAxisRight().setEnabled(false); // disable right Y-axis
+        BarData barData = new BarData(dataSet);
+        barChart.setData(barData);
+        barData.setBarWidth(0.1f);
+
+        barChart.invalidate(); // refresh the chart
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setGranularity(1f); // khoảng cách của lưới là 1
 
 
-        lineChart.invalidate(); // refresh the chart
+
+
+
+
 
 
 
