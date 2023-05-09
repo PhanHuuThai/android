@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.bean.Product;
 import com.example.coffeeapp.model.productOrdered;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         {
             holder.tvname.setText(ContactList.get(position).getName());
             holder.tvprice.setText(String.valueOf(ContactList.get(position).getSalePrice()));
-            holder.image.setImageResource(R.drawable.hampogar) ;
+            Picasso.get().load(ContactList.get(position).getImage()).into(holder.image);
+            //holder.image.setImageResource(R.drawable.hampogar) ;
             holder.bt.setVisibility(View.GONE);
         }
 

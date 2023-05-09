@@ -3,6 +3,7 @@ package com.example.coffeeapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coffeeapp.bean.Product;
 import com.example.coffeeapp.model.productOrdered;
 import com.google.android.material.textfield.TextInputEditText;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private View v;
     private TextInputEditText txtsize , txtsoluong,txtchuthich ;
     private Button bt_huy, bt_them,btorder ;
+    private int h;
     public ProductAdapter(ArrayList<productOrdered> contactList, Context context , View view)
     {
         this.v=view ;
@@ -44,6 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 dialog.dismiss();
             }
         });
+        //bt_them = v.findViewById()
     }
     public ProductAdapter(ArrayList<productOrdered> contactList)
     {
@@ -64,39 +68,44 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         @Override
         public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position)
         {
+            int n = position;
             holder.tvname.setText(ContactList.get(position).getName());
             holder.tvprice.setText(String.valueOf(ContactList.get(position).getSalePrice()));
-            holder.image.setImageResource(R.drawable.hampogar) ;
+            Picasso.get().load(ContactList.get(position).getImage()).into(holder.image);
+            Log.d("IMG1",ContactList.get(position).getImage()) ;
+            String x=ContactList.get(position).getImage() ;
+            Log.d("IMG",x) ;
             holder.bt.setOnClickListener(new View.OnClickListener()
             {
                 @Override
-                public void onClick(View v)
+                public void onClick(View x1)
                 {
+                    h = n;
+                    ImageView image1;
+                    image1 = (ImageView) v.findViewById(R.id.ImagePopup);
+                    Picasso.get().load(x).into(image1);
                     dialog.show();
                 }
             });
         }
-        public void Addproduct()
-        {
-            dialogbuildder= new AlertDialog.Builder(m_context) ;
-            View AddproductPopup = v ;
-//        txtsize = (TextInputEditText) AddproductPopup.findViewById(R.id.popup_txtsize) ;
-//        txtsoluong = (TextInputEditText) AddproductPopup.findViewById(R.id.popup_txtsoluong) ;
-//        txtchuthich = (TextInputEditText) AddproductPopup.findViewById(R.id.popup_txtchuthich) ;
-
-            dialogbuildder.setView(AddproductPopup) ;
-            dialog=dialogbuildder.create();
-            dialog.show();
-            bt_huy = (Button) AddproductPopup.findViewById(R.id.popup_cancle) ;
-            bt_huy.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
-                {
-                    dialog.dismiss();
-                }
-            });
-        }
+//        public void Addproduct()
+//        {
+//            dialogbuildder= new AlertDialog.Builder(m_context) ;
+//            View AddproductPopup = v ;
+//
+//            dialogbuildder.setView(AddproductPopup) ;
+//            dialog=dialogbuildder.create();
+//            dialog.show();
+//            bt_huy = (Button) AddproductPopup.findViewById(R.id.popup_cancle) ;
+//            bt_huy.setOnClickListener(new View.OnClickListener()
+//            {
+//                @Override
+//                public void onClick(View v)
+//                {
+//                    dialog.dismiss();
+//                }
+//            });
+//        }
 
         @Override
         public int getItemCount() {

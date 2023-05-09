@@ -57,6 +57,16 @@ public class OrderActivity extends AppCompatActivity
         setContentView(R.layout.activity_order);
         tvTenBan = findViewById(R.id.txtTenBan);
         tvTenBan.setText(nameTable);
+
+        bt_huy = findViewById(R.id.bt_cancle);
+        bt_huy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent e = new Intent(OrderActivity.this, AllTable.class);
+                startActivity(e);
+            }
+        });
+
         productsList= new ArrayList<>() ;
         final  View AddproductPopup = getLayoutInflater().inflate(R.layout.addproduct_popup,null) ;
 
