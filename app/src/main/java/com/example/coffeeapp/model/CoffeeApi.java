@@ -40,10 +40,7 @@ public interface CoffeeApi {
     @GET("CategoryServlet/{key}")
     Single<List<category>> getCategory(@Path("key") String key);
     @PUT("OrderServlet/AddOrder")
-    Single<Void>addBill(@Body List<Object> list);
+    Single<Void> addBill(@Body List<Object> list);
     @PUT("EmployeeServlet/")
     Single<Void>addEmployee(@Body List<Object> staff);
-    
-
-
 }

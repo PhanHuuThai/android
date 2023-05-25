@@ -379,10 +379,10 @@
 
 
         <LinearLayout
-            android:layout_width="393dp"
+            android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="1dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -410,7 +410,7 @@
 
             <Button
                 android:id="@+id/button_ListBill"
-                android:layout_width="96dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/bill"
                 tools:ignore="SpeakableTextPresentCheck">
@@ -419,7 +419,7 @@
 
             <Button
                 android:id="@+id/button_AboutMe"
-                android:layout_width="78dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/me"
                 android:backgroundTint="@color/background"

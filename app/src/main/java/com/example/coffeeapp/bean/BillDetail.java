@@ -65,4 +65,15 @@ public class BillDetail {
     public void setNote(String note) {
         this.note = note;
     }
+
+    @Override
+    public String toString() {
+        return "BillDetail{" +
+                "idOrderDetail='" + idOrderDetail + '\'' +
+                ", idProduct='" + idProduct + '\'' +
+                ", idOrder='" + idOrder + '\'' +
+                ", quantity=" + quantity +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }

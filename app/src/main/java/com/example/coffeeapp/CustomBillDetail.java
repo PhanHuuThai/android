@@ -49,13 +49,11 @@ public class CustomBillDetail extends RecyclerView.Adapter<CustomBillDetail.View
             productOrdered product = productList.get(position);
 
             holder.tv_name.setText(product.getName());
-            holder.tv_size.setText("");
             holder.tv_SL.setText(Integer.toString(billDetail.getQuantity()));
             holder.tv_thanhtien.setText((Integer.toString(billDetail.getQuantity()*(int)product.getSalePrice()))+"đ");
             value += billDetail.getQuantity()*(int)product.getSalePrice();
         } else {
             holder.tv_name.setText("Tổng tiền");
-            holder.tv_size.setText("");
             holder.tv_SL.setText("");
             holder.tv_thanhtien.setText((Integer.toString(value)+"đ"));
         }
@@ -76,7 +74,6 @@ public class CustomBillDetail extends RecyclerView.Adapter<CustomBillDetail.View
         public ViewHolder(View view) {
             super(view);
             tv_name = (TextView) view.findViewById(R.id.tv_tenmon);
-            tv_size = (TextView) view.findViewById(R.id.tv_size);
             tv_SL = (TextView) view.findViewById(R.id.tv_soluong);
             tv_thanhtien = (TextView) view.findViewById(R.id.tv_thanhtien);
         }

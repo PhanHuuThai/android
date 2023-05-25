@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.coffeeapp.bean.Table;
+import com.example.coffeeapp.model.productOrdered;
 import com.example.coffeeapp.viewmodel.TableApiService;
 
 import java.util.ArrayList;
@@ -30,20 +31,26 @@ public class AllTable extends AppCompatActivity {
     private CustomTable customTable;
     private TableApiService tableService;
     private Button bt_Menu, bt_Table,bt_Bill,bt_AboutMe;
+    int status = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_table);
-
+        ProductAdapter a = new ProductAdapter();
+        a.setProductsss();
+        a.setChuthich();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        Log.d("tablell", "111");
         tableService = new TableApiService();
 
         tableList = new ArrayList<>();
         Log.d("aaaa", Integer.toString(tableList.size()));
         rv_table = findViewById(R.id.rv_ban);
+
 
         rv_table.setLayoutManager(new LinearLayoutManager(this));
         customTable = new CustomTable(tableList, AllTable.this);

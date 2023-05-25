@@ -2,11 +2,13 @@ package com.example.coffeeapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,11 +25,15 @@ import java.util.List;
 public class CustomTable extends RecyclerView.Adapter<CustomTable.ViewHolder> {
 
     private ArrayList<Table> TableList ;
+//    private static ArrayList<Integer> statusban = new ArrayList<>();
     Context context;
 
     public CustomTable(ArrayList<Table> tableList, Context ct) {
         TableList = tableList;
         this.context = ct;
+//        for(int i = 0; i < 5; i++){
+//            statusban.add(1);
+//        }
     }
 
     @NonNull
@@ -56,28 +62,49 @@ public class CustomTable extends RecyclerView.Adapter<CustomTable.ViewHolder> {
         }
 
         holder.tv_status.setText("Trạng Thái");
-        if(holder.tv_trangthai.getText().equals("Còn Chỗ")){
+//        if(statusban.get(k) == 1) {
             holder.img_status.setImageResource(R.drawable.icon_xanh);
-        } else {
-            holder.img_status.setImageResource(R.drawable.icon_do);
-        }
+//        } else {
+//            holder.img_status.setImageResource(R.drawable.icon_do);
+//        }
+
+
+        holder.img_status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable drawable = holder.img_status.getDrawable();
+                Drawable iconXanhDrawable = context.getResources().getDrawable(R.drawable.icon_xanh); // Hoặc getDrawable(R.drawable.icon_xanh)
+                boolean isIconXanh = drawable != null && drawable.getConstantState().equals(iconXanhDrawable.getConstantState());
+                if(isIconXanh){
+//                    statusban.set(k, 1);
+                    holder.img_status.setImageResource(R.drawable.icon_do);
+                } else {
+//                    statusban.set(k, 0);
+                    holder.img_status.setImageResource(R.drawable.icon_xanh);
+                }
+            }
+        });
+
         holder.btn_Add.setImageResource(R.drawable.icon_cong);
         holder.btn_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent e = new Intent(context, OrderActivity.class);
-                e.putExtra("nameTable", TableList.get(k).getName());
-                context.startActivity(e);
-                // Đức - Đoạn dưới t viết ra để thử api đó
-//                BillApiService apiService = new BillApiService();
-//                List<Object> list = new ArrayList<>();
-//
-//                Bill bill = new Bill("HD16","5-6-2022","NV01",35d,"TB04");
-//                list.add(bill);
-//                list.add(new BillDetail("HDCT001","SP02","HD16",5,"Không có"));
-//                apiService.addBill(list);
+                Drawable drawable = holder.img_status.getDrawable();
+                Drawable iconXanhDrawable = context.getResources().getDrawable(R.drawable.icon_do); // Hoặc getDrawable(R.drawable.icon_xanh)
+                boolean isIconDo = drawable != null && drawable.getConstantState().equals(iconXanhDrawable.getConstantState());
+
+                if(isIconDo){
+                    Toast.makeText(context.getApplicationContext(), "Bàn đã có người ngồi",Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent e = new Intent(context, OrderActivity.class);
+                    e.putExtra("nameTable", TableList.get(k).getName());
+                    e.putExtra("idTable", TableList.get(k).getId());
+                    context.startActivity(e);
+                }
+
             }
         });
+
     }
 
     @Override

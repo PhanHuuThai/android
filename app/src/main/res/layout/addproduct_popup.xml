@@ -69,26 +69,9 @@
                 app:layout_constraintVertical_bias="0.794">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_chuthich"
                     android:layout_width="match_parent"
                     android:layout_height="213dp"
-                    android:background="#989090"
-                    android:backgroundTint="#B5AFAF" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layout1"
-                android:layout_width="82dp"
-                android:layout_height="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.846"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.131">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:background="#989090"
                     android:backgroundTint="#B5AFAF" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -107,18 +90,6 @@
                 app:layout_constraintVertical_bias="0.035" />
 
             <TextView
-                android:id="@+id/popup_txttenmon2"
-                android:layout_width="71dp"
-                android:layout_height="25dp"
-                android:text="Size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.052"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.158" />
-
-            <TextView
                 android:id="@+id/popup_txttenmon4"
                 android:layout_width="71dp"
                 android:layout_height="25dp"
@@ -128,7 +99,7 @@
                 app:layout_constraintHorizontal_bias="0.052"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.264" />
+                app:layout_constraintVertical_bias="0.229" />
 
             <TextView
                 android:id="@+id/popup_txttenmon5"
@@ -148,12 +119,13 @@
                 android:layout_height="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.836"
+                app:layout_constraintHorizontal_bias="0.846"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.262">
+                app:layout_constraintVertical_bias="0.214">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edTextSoluong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#989090"
