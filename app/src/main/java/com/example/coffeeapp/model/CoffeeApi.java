@@ -43,4 +43,9 @@ public interface CoffeeApi {
     Single<Void> addBill(@Body List<Object> list);
     @PUT("EmployeeServlet/")
     Single<Void>addEmployee(@Body List<Object> staff);
+    @POST("EmployeeServlet/")
+    Single<Void>editEmployee(@Body Staff staff);
+    @GET("TimeKeepingServlet/{key}")
+    Single<Void>CCEmployee(@Path("key") String key);
+
 }

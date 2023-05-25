@@ -69,7 +69,7 @@ public class Bill {
 
     @Override
     public String toString() {
-        return "Bill{" +
+        return "Bill :" +
                 "id='" + id + '\'' +
                 ", time='" + time + '\'' +
                 ", idEmployee='" + idEmployee + '\'' +

@@ -82,8 +82,8 @@ public class registers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 apiService = new StaffApiService();
-//                Log.d("Test","1");
                 List<Object> list= new ArrayList<>();
+
                 Staff staff = new Staff(String.valueOf(editid.getText()),String.valueOf(editname.getText()),String.valueOf(editphone.getText()),String.valueOf(editemail.getText()),String.valueOf(editdayofbirth.getText()),String.valueOf(editaddress.getText()),url,Integer.parseInt(String.valueOf(editsalary.getText())),0);
                 account Account = new account(String.valueOf(editid.getText()),String.valueOf(editpass.getText()), 1);
                 list.add(staff);
@@ -91,6 +91,9 @@ public class registers extends AppCompatActivity {
                 apiService.addEmployee(list);
 
                 Log.d("DEBUG","AAAAA" +list);
+
+                Intent intent= new Intent(registers.this, AllStaff.class);
+                startActivity(intent);
             }
         });
 
