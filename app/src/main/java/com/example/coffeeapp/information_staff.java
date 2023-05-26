@@ -126,5 +126,6 @@ public class information_staff extends Activity {
                 startActivity(intent);
             }
         });
+
     }
 }

@@ -70,4 +70,16 @@ public class personal_information extends Activity {
         Log.d("DEBUG","personal_information_2");
 
     }
+    private static String getIdStaff(String id){
+        String result= "";
+        int a = Integer.parseInt(id.substring(2));
+        a++;
+        if(a < 10){
+            result = id.substring(0,2) + "0" + Integer.toString(a);
+        }
+        else{
+            result = id.substring(0,2) + Integer.toString(a);
+        }
+        return result;
+    }
 }
