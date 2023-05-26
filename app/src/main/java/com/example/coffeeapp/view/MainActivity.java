@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       Intent e = new Intent(MainActivity.this, EmployeeTimekeepingV.class);
+       Intent e = new Intent(MainActivity.this, Login.class);
         startActivity(e);
    }
 }

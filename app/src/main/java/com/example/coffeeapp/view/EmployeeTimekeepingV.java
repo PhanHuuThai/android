@@ -136,6 +136,8 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        Intent intent = new Intent(EmployeeTimekeepingV.this, EmployeeTimekeepingV.class);
+                        startActivity(intent);
 
 
                     }
@@ -145,6 +147,8 @@ public class EmployeeTimekeepingV extends AppCompatActivity {
                 builder.show();
 
                 Log.d("RESET",String.valueOf(employeeTimekeepingAdapter.resetList()));
+
+
             }
         });
     }
