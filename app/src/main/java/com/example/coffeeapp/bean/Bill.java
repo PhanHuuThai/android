@@ -74,6 +74,7 @@ public class Bill {
                 ", time='" + time + '\'' +
                 ", idEmployee='" + idEmployee + '\'' +
                 ", price=" + price +
-                ", idTable='" + idTable ;
+                ", idTable='" + idTable + '\'' +
+                '}';
     }
 }

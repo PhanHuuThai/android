@@ -1,5 +1,6 @@
 package com.example.coffeeapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,9 +38,12 @@ public class OrderActivity extends AppCompatActivity
     private ProductOrderApiService productService;
     private AlertDialog dialog ;
     private TextInputEditText txtsize , txtsoluong,txtchuthich ;
-    private Button bt_huy, bt_them,btorder ;
+    private Button bt_huy ,btorder ;
     private TextView tvTenBan;
-    private String nameTable;
+    private static final int REQUEST_CODE = 1;
+    private String nameTable, idTable;
+    ArrayList<productOrdered> listOldProduct = new ArrayList<>();
+    int check = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,10 +51,15 @@ public class OrderActivity extends AppCompatActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        int check = 0;
+
+        listOldProduct = new ArrayList<>();
         Intent e = getIntent();
         nameTable = e.getStringExtra("nameTable");
-        Log.d("sss", nameTable);
+        idTable = e.getStringExtra("idTable");
 
+        Log.d("sss", nameTable);
+        Log.d("check", String.valueOf(check));
 
         productService = new ProductOrderApiService();
         super.onCreate(savedInstanceState);
@@ -63,9 +72,35 @@ public class OrderActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent e = new Intent(OrderActivity.this, AllTable.class);
+
                 startActivity(e);
             }
         });
+
+        btorder = findViewById(R.id.but_GioHang);
+        btorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProductAdapter a = new ProductAdapter();
+                ArrayList<productOrdered> productss = new ArrayList<>();
+
+                productss = a.getProductsss();
+
+                ArrayList<String> chuthich = a.getChuthich();
+                Log.d("Chuthich1", chuthich.toString());
+
+                Log.d("productss", productss.toString());
+
+                Intent t = new Intent(OrderActivity.this, ListDrink.class);
+                t.putExtra("nameTable", nameTable);
+                t.putExtra("idTable", idTable);
+                t.putExtra("list", productss);
+                t.putExtra("list2", chuthich);
+
+                startActivityForResult(t, REQUEST_CODE);
+            }
+        });
+
 
         productsList= new ArrayList<>() ;
         final  View AddproductPopup = getLayoutInflater().inflate(R.layout.addproduct_popup,null) ;
@@ -94,19 +129,24 @@ public class OrderActivity extends AppCompatActivity
                     }
                 });
 
-
-
-
     }
-//    public void Addproduct()
-//    {
-//        dialogbuildder= new AlertDialog.Builder(this) ;
-//        final  View AddproductPopup = getLayoutInflater().inflate(R.layout.addproduct_popup,null) ;
-////        txtsize = (TextInputEditText) AddproductPopup.findViewById(R.id.popup_txtsize) ;
-////        txtsoluong = (TextInputEditText) AddproductPopup.findViewById(R.id.popup_txtsoluong) ;
-////        txtchuthich = (TextInputEditText) AddproductPopup.findViewById(R.id.popup_txtchuthich) ;
-//        dialogbuildder.setView(AddproductPopup) ;
-//        dialog=dialogbuildder.create();
-//        dialog.show();
-//    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                // Xử lý kết quả ở đây
+                // Bạn có thể truy cập dữ liệu được trả về bằng cách sử dụng tham số `data`
+
+                listOldProduct = (ArrayList<productOrdered>) data.getSerializableExtra("productList");
+
+                check = data.getIntExtra("check", 0);
+                Log.d("listOldProduct", listOldProduct.toString());
+
+            } else if (resultCode == RESULT_CANCELED) {
+                // Xử lý trường hợp người dùng hủy thao tác
+            }
+        }
+    }
 }

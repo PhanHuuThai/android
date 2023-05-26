@@ -69,13 +69,12 @@
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/abril_fatface"
                 android:text="Delete"
-                android:textColor="@color/material_dynamic_neutral0"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.185"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btn_cancel"
@@ -85,7 +84,7 @@
                 android:backgroundTint="@color/teal_200"
                 android:fontFamily="@font/abril_fatface"
                 android:text="Cancel"
-                android:textColor="@color/material_dynamic_neutral0"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.826"

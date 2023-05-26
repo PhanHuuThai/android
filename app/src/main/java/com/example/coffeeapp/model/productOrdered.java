@@ -2,7 +2,9 @@ package com.example.coffeeapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class productOrdered {
+import java.io.Serializable;
+
+public class productOrdered implements Serializable {
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -16,8 +18,19 @@ public class productOrdered {
     @SerializedName("idCatelory")
     private  String idCategory;
 
+    @Override
+    public String toString() {
+        return "productOrdered{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", salePrice=" + salePrice +
+                ", quantity=" + quantity +
+                ", image='" + image + '\'' +
+                ", idCategory='" + idCategory + '\'' +
+                '}';
+    }
 
-    public productOrdered(String id, String name, double salePrice, int quantity, String image,String idCategory) {
+    public productOrdered(String id, String name, double salePrice, int quantity, String image, String idCategory) {
         this.id = id;
         this.name = name;
         this.salePrice = salePrice;
@@ -64,5 +77,13 @@ public class productOrdered {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(String idCategory) {
+        this.idCategory = idCategory;
     }
 }

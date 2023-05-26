@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -17,18 +18,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coffeeapp.bean.Product;
 import com.example.coffeeapp.model.productOrdered;
+import com.example.coffeeapp.view.RevenueView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private AlertDialog.Builder dialogbuildder ;
     private AlertDialog dialog ;
     private Context m_context ;
     private View v;
+    private ArrayList<productOrdered> ContactList ;
     private TextInputEditText txtsize , txtsoluong,txtchuthich ;
+    private static ArrayList<productOrdered> productsss =new ArrayList<>();
+    private static ArrayList<String> chuthich = new ArrayList<>();
     private Button bt_huy, bt_them,btorder ;
+    private TextInputEditText edSoluong, edChuThich;
     private int h;
     public ProductAdapter(ArrayList<productOrdered> contactList, Context context , View view)
     {
@@ -38,6 +45,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         this.dialogbuildder= new AlertDialog.Builder(m_context) ;
         dialogbuildder.setView(v) ;
         dialog=dialogbuildder.create();
+        edSoluong = v.findViewById(R.id.edTextSoluong);
+        edChuThich = v.findViewById(R.id.ed_chuthich);
+        //Log.d("listcontact", ContactList.get(1).getName());
         bt_huy = (Button) v.findViewById(R.id.popup_cancle) ;
         bt_huy.setOnClickListener(new View.OnClickListener()
         {
@@ -47,14 +57,61 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 dialog.dismiss();
             }
         });
-        //bt_them = v.findViewById()
+        bt_them = v.findViewById(R.id.popup_btadd);
+        bt_them.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ContactList!=null)
+                {
+                    if(String.valueOf(edSoluong.getText()).equals("")){
+                        Toast.makeText(context.getApplicationContext(), "Bạn cần nhập số lượng",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        productOrdered product = new productOrdered(ContactList.get(h).getId(), ContactList.get(h).getName(),
+                                ContactList.get(h).getSalePrice(), Integer.parseInt(String.valueOf(edSoluong.getText())), ContactList.get(h).getImage(), ContactList.get(h).getIdCategory());
+                        chuthich.add(String.valueOf(edChuThich.getText()));
+
+
+                        Log.d("chuthich", chuthich.toString());
+                        productsss.add(product);
+                        dialog.dismiss();
+                    }
+
+                }
+
+            }
+        });
+
+
     }
+
+
     public ProductAdapter(ArrayList<productOrdered> contactList)
     {
         this.ContactList = contactList;
     }
+    public ProductAdapter()
+    {
 
-        private ArrayList<productOrdered> ContactList ;
+    }
+
+    public ArrayList<productOrdered> getProductsss(){
+        return productsss;
+    }
+
+    public void setProductsss(){
+        productsss.clear();
+    }
+
+    public ArrayList<String> getChuthich(){
+        return chuthich;
+    }
+
+    public void setChuthich(){
+        chuthich.clear();
+    }
+
+
         @NonNull
         @Override
         public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)

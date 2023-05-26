@@ -82,7 +82,7 @@ public class ProducctOrderAdapter extends RecyclerView.Adapter<ProducctOrderAdap
         }
         return 0;
     }
-    public  class DataViewHolder  extends RecyclerView.ViewHolder{
+    public class DataViewHolder  extends RecyclerView.ViewHolder{
         private final TextView tvName;
         private final TextView tvTotal;
         private final TextView tvQuantity;
