@@ -42,6 +42,7 @@ import com.cloudinary.android.callback.UploadResult;
 import com.cloudinary.utils.ObjectUtils;
 import com.example.coffeeapp.AllStaff;
 import com.example.coffeeapp.R;
+import com.example.coffeeapp.bean.Staff;
 import com.example.coffeeapp.information_staff;
 import com.example.coffeeapp.model.category;
 import com.example.coffeeapp.model.productOrdered;
@@ -76,6 +77,7 @@ public class OrderByEmployee extends AppCompatActivity {
     private Button btnnhanvien,btndiemdanh,btnsanpham,btnthongtin,btndoanhthu;
     private  String secureUrl ="";
     private List<String> categoryIdList;
+    private String lastIdFood, newidFood;
 
     String idProductOrdered  = "";
     private  String idCategotySelected = "";
@@ -211,7 +213,7 @@ public class OrderByEmployee extends AppCompatActivity {
         windownAttribute.gravity = gravity;
         window.setAttributes(windownAttribute);
         dialog.show();
-        EditText tvId = dialog.findViewById(R.id.SPN_getid);
+
         EditText tvQuantity = dialog.findViewById(R.id.ET_getValueNumber);
         EditText tvSalePrice = dialog.findViewById(R.id.txt_getValueSalePrice);
         EditText tvName = dialog.findViewById(R.id.SPN_getValueName);
@@ -254,11 +256,34 @@ public class OrderByEmployee extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 apiService = new ProductOrderApiService();
-                apiService.addProduct(String.valueOf(tvId.getText()),String.valueOf(tvName.getText()),
-                        Double.parseDouble(String.valueOf(tvSalePrice.getText())),Integer.parseInt(String.valueOf(tvQuantity.getText())),
-                        String.valueOf(secureUrl),idCategotySelected
+                List<productOrdered> ListFood = new ArrayList<>();
+                apiService.GetAllPBO("All")
+                                .subscribeOn(Schedulers.newThread())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribeWith(new DisposableSingleObserver<List<productOrdered>>() {
+                                            @Override
+                                            public void onSuccess(@NonNull List<productOrdered> productOrdereds) {
+                                                for(productOrdered item : productOrdereds){
+                                                    ListFood.add(item);
+                                                }
+                                                lastIdFood= ListFood.get(ListFood.size()-1).getId();
+                                                Log.d("lastidfood",lastIdFood);
+                                                newidFood = getIdFood(lastIdFood);
+                                                apiService.addProduct(newidFood,String.valueOf(tvName.getText()),
+                                                        Double.parseDouble(String.valueOf(tvSalePrice.getText())),Integer.parseInt(String.valueOf(tvQuantity.getText())),
+                                                        String.valueOf(secureUrl),idCategotySelected);
 
-                );
+                                            }
+
+                                            @Override
+                                            public void onError(@NonNull Throwable e) {
+
+                                            }
+                                        });
+
+
+
+
                 Log.d("IMAGE1",secureUrl);
                 dialog.dismiss();
 
@@ -273,6 +298,18 @@ public class OrderByEmployee extends AppCompatActivity {
             Uri uri = data.getData();
             uploadImage(uri);
         }
+    }
+    private static String getIdFood(String id){
+        String result= "";
+        int a = Integer.parseInt(id.substring(2));
+        a++;
+        if(a < 10){
+            result = id.substring(0,2) + "0" + Integer.toString(a);
+        }
+        else{
+            result = id.substring(0,2) + Integer.toString(a);
+        }
+        return result;
     }
     private void uploadImage(Uri uri) {
                 Map config = new HashMap();

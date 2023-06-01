@@ -34,6 +34,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.observers.DisposableSingleObserver;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 
 public class registers extends AppCompatActivity {
     private StaffApiService apiService;
@@ -41,7 +46,8 @@ public class registers extends AppCompatActivity {
     private Button btnadd,btnback;
     private EditText editid,editname,editphone,editemail,editdayofbirth,editaddress,editsalary,editpass;
     private String url ="";
-
+    private ArrayList<Staff> staffList;
+    private String LastIdStaff,NewIdStaff;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,7 +57,7 @@ public class registers extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        editid = findViewById(R.id.editId);
+//        editid = findViewById(R.id.editId);
         editname = findViewById(R.id.editName);
         editphone = findViewById(R.id.editPhoneNumber);
         editemail = findViewById(R.id.editEmail);
@@ -81,23 +87,62 @@ public class registers extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("test","111");
                 apiService = new StaffApiService();
-                List<Object> list= new ArrayList<>();
+                List<Staff> ListStaff = new ArrayList<>();
+                apiService.GetAllStaff("All")
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<List<Staff>>() {
+                            @SuppressLint("NotifyDataSetChanged")
+                            @Override
+                            public void onSuccess(@NonNull List<Staff> staff) {
+                                Log.d("DEBUG","Hoan thanh1");
+                                for (Staff item :staff
+                                ) {
+                                    Log.d("DEBUG", " " + item.getId());
+                                    ListStaff.add(item);
+                                }
+                                LastIdStaff = ListStaff.get(ListStaff.size()-1).getId();
+                                Log.d("lastidstaff", " " + LastIdStaff);
+                                NewIdStaff = getIdStaff(LastIdStaff);
+                                List<Object> list= new ArrayList<>();
 
-                Staff staff = new Staff(String.valueOf(editid.getText()),String.valueOf(editname.getText()),String.valueOf(editphone.getText()),String.valueOf(editemail.getText()),String.valueOf(editdayofbirth.getText()),String.valueOf(editaddress.getText()),url,Integer.parseInt(String.valueOf(editsalary.getText())),0);
-                account Account = new account(String.valueOf(editid.getText()),String.valueOf(editpass.getText()), 1);
-                list.add(staff);
-                list.add(Account);
-                apiService.addEmployee(list);
+                                Staff staffs = new Staff(NewIdStaff,String.valueOf(editname.getText()),String.valueOf(editphone.getText()),String.valueOf(editemail.getText()),String.valueOf(editdayofbirth.getText()),String.valueOf(editaddress.getText()),url,Integer.parseInt(String.valueOf(editsalary.getText())),0);
+                                account Account = new account(NewIdStaff,String.valueOf(editpass.getText()), 1);
+                                list.add(staffs);
+                                list.add(Account);
+                                apiService.addEmployee(list);
 
-                Log.d("DEBUG","AAAAA" +list);
+                                Log.d("DEBUG","AAAAA" +list);
 
-                Intent intent= new Intent(registers.this, AllStaff.class);
-                startActivity(intent);
+                                Intent intent= new Intent(registers.this, AllStaff.class);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                Log.d("DEBUG","Fail "+e.getMessage());
+                            }
+                        });
+//
             }
         });
 
 
+
+    }
+    private static String getIdStaff(String id){
+        String result= "";
+        int a = Integer.parseInt(id.substring(2));
+        a++;
+        if(a < 10){
+            result = id.substring(0,2) + "0" + Integer.toString(a);
+        }
+        else{
+            result = id.substring(0,2) + Integer.toString(a);
+        }
+        return result;
     }
 
     @Override
